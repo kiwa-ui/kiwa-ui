@@ -600,6 +600,55 @@ These need to be rebuilt with SSR-first approach + `@hono-ui/enhance`:
 
 ---
 
+## Shipping & the Public Mirror
+
+The canonical Hono UI repo is private. The repository at
+`github.com/hono-ui/hono-ui` that you may be reading right now is a
+read-only **mirror** populated only by `scripts/sync-public.sh`,
+which runs from the private upstream. Whenever a change ships
+upstream that touches a public-included path, the mirror needs to be
+re-synced or it falls behind.
+
+### What's included on the public mirror
+
+The whitelist lives at `scripts/public-include.txt`. As a quick rule:
+
+- **Public**: `packages/cli/`, `packages/enhance/`, `packages/registry/`, `registry/ui/`, `registry/blocks/free/`, `registry/lib/`, `templates/`, plus root files `README.md`, `LICENSE`, `LICENSE-PRO.md`, `CHANGELOG.md`, `ARCHITECTURE.md`, `AGENTS.md`, `ROADMAP.md`, and the standard config files (`package.json`, `tsconfig.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `.gitignore`).
+- **Private-only** (never synced): `registry/blocks/pro/`, `registry/starters/`, `docs/`, `design/`, internal planning MDs (`DEPLOYMENT.md`, `MARKETING-BLOCKS-PLAN.md`, `DASHBOARD-SCREENS.md`, `CLAUDE.md`).
+
+### When and how to sync
+
+After every upstream push that touches a public-included path, run:
+
+```bash
+bash scripts/sync-public.sh
+```
+
+The script regenerates a free-only registry manifest from the trimmed
+tree, runs the redact/leak checks (forbidden directories, secret IDs),
+runs `pnpm typecheck` against the trimmed tree, then clones the public
+repo, wipes its working tree, copies the staged files in, and pushes a
+fresh `Sync from private @ <sha>` commit.
+
+The `/ship` slash command runs this step automatically when relevant.
+If you commit and push by hand, run it yourself. See `DEPLOYMENT.md`
+in the upstream repo for the full release flow.
+
+A monthly scheduled agent independently audits the public mirror for
+leaks (forbidden paths, secret IDs, non-free manifest entries) as a
+backstop, but it's a backstop — don't let the mirror drift between
+releases.
+
+### What goes where
+
+For agents working in this codebase: any new file or directory you
+add is **private by default**. If you want it on the public mirror,
+add the path to `scripts/public-include.txt` and re-run a sync.
+Conversely, anything internal (planning docs, config with secrets,
+design files) just lives in the upstream repo and stays private.
+
+---
+
 ## Testing Requirements
 
 ### Components
