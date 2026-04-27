@@ -60,7 +60,7 @@ No `forwardRef`, no `useState`, no `'use client'`. Just SSR JSX that runs anywhe
 
 ### Free — MIT-licensed
 
-- **51 UI primitives** — button, card, dialog, dropdown, accordion, popover, tooltip, tabs, table, slider, editor, and more
+- **50 UI primitives** — button, card, dialog, dropdown, accordion, popover, tooltip, tabs, table, slider, editor, and more
 - **30 marketing blocks** — heroes, features, pricing, FAQ, CTAs, footers
 - **`@hono-ui/cli`** — install components straight from the registry
 - **`@hono-ui/enhance`** — optional progressive-enhancement helpers for every interactive primitive
@@ -110,8 +110,17 @@ Requires Hono 4+ and Tailwind CSS v4.
 - [Get started](https://honoui.com/docs?guide=installation)
 - [Components](https://honoui.com/docs?group=components)
 - [Free blocks](https://honoui.com/docs?group=marketing)
-- [Pro blocks](https://honoui.com/docs?group=marketing) — preview without a license
+- [Pro blocks](https://honoui.com/docs) — preview without a license
 - [Pricing & FAQ](https://honoui.com/pricing)
+
+---
+
+## Bug reports & contributing
+
+This GitHub repo is a read-only mirror of our private working repo. The full development happens upstream; the open-source surface is synced here on each release.
+
+- **Found a bug?** File it at [github.com/hono-ui/hono-ui/issues](https://github.com/hono-ui/hono-ui/issues) — that's the right place for bug reports, feature requests, and questions.
+- **Pull requests** are not currently accepted. If you've got a fix or improvement, open an issue describing what you'd change and we'll address it from upstream.
 
 ---
 
