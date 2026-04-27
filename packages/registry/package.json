@@ -1,0 +1,23 @@
+{
+  "name": "@hono-ui/registry",
+  "version": "0.0.1",
+  "description": "Registry API for Hono UI components (Cloudflare Worker)",
+  "type": "module",
+  "scripts": {
+    "build:registry": "tsx scripts/build-registry.ts",
+    "dev": "pnpm build:registry && wrangler dev",
+    "deploy": "pnpm build:registry && wrangler deploy",
+    "typecheck": "pnpm build:registry && tsc --noEmit",
+    "lint": "echo 'No linter configured yet'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "dependencies": {
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.25.0"
+  }
+}

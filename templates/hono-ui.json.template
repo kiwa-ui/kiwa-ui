@@ -1,0 +1,13 @@
+{
+  "$schema": "https://registry.honoui.com/schema.json",
+  "tsconfig": "tsconfig.json",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "styles/globals.css"
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "components": []
+}

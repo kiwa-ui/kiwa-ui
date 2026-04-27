@@ -1,0 +1,154 @@
+{
+  "name": "@hono-ui/enhance",
+  "version": "1.0.1",
+  "description": "Optional progressive enhancement for Hono UI components",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dialog": {
+      "import": "./dist/dialog.js",
+      "types": "./dist/dialog.d.ts"
+    },
+    "./dropdown": {
+      "import": "./dist/dropdown.js",
+      "types": "./dist/dropdown.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast.js",
+      "types": "./dist/toast.d.ts"
+    },
+    "./clipboard": {
+      "import": "./dist/clipboard.js",
+      "types": "./dist/clipboard.d.ts"
+    },
+    "./theme": {
+      "import": "./dist/theme.js",
+      "types": "./dist/theme.d.ts"
+    },
+    "./tabs": {
+      "import": "./dist/tabs.js",
+      "types": "./dist/tabs.d.ts"
+    },
+    "./accordion": {
+      "import": "./dist/accordion.js",
+      "types": "./dist/accordion.d.ts"
+    },
+    "./collapsible": {
+      "import": "./dist/collapsible.js",
+      "types": "./dist/collapsible.d.ts"
+    },
+    "./toggle": {
+      "import": "./dist/toggle.js",
+      "types": "./dist/toggle.d.ts"
+    },
+    "./popover": {
+      "import": "./dist/popover.js",
+      "types": "./dist/popover.d.ts"
+    },
+    "./tooltip": {
+      "import": "./dist/tooltip.js",
+      "types": "./dist/tooltip.d.ts"
+    },
+    "./sheet": {
+      "import": "./dist/sheet.js",
+      "types": "./dist/sheet.d.ts"
+    },
+    "./slider": {
+      "import": "./dist/slider.js",
+      "types": "./dist/slider.d.ts"
+    },
+    "./command": {
+      "import": "./dist/command.js",
+      "types": "./dist/command.d.ts"
+    },
+    "./alert-dialog": {
+      "import": "./dist/alert-dialog.js",
+      "types": "./dist/alert-dialog.d.ts"
+    },
+    "./context-menu": {
+      "import": "./dist/context-menu.js",
+      "types": "./dist/context-menu.d.ts"
+    },
+    "./hover-card": {
+      "import": "./dist/hover-card.js",
+      "types": "./dist/hover-card.d.ts"
+    },
+    "./editor": {
+      "import": "./dist/editor.js",
+      "types": "./dist/editor.d.ts"
+    },
+    "./carousel": {
+      "import": "./dist/carousel.js",
+      "types": "./dist/carousel.d.ts"
+    },
+    "./sidebar": {
+      "import": "./dist/sidebar.js",
+      "types": "./dist/sidebar.d.ts"
+    },
+    "./sidebar-mobile": {
+      "import": "./dist/sidebar-mobile.js",
+      "types": "./dist/sidebar-mobile.d.ts"
+    },
+    "./popover-submenu": {
+      "import": "./dist/popover-submenu.js",
+      "types": "./dist/popover-submenu.d.ts"
+    },
+    "./date-picker": {
+      "import": "./dist/date-picker.js",
+      "types": "./dist/date-picker.d.ts"
+    },
+    "./selectable-table": {
+      "import": "./dist/selectable-table.js",
+      "types": "./dist/selectable-table.d.ts"
+    },
+    "./select": {
+      "import": "./dist/select.js",
+      "types": "./dist/select.d.ts"
+    },
+    "./chart-tooltip": {
+      "import": "./dist/chart-tooltip.js",
+      "types": "./dist/chart-tooltip.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "@tiptap/core": "^2.0.0",
+    "@tiptap/pm": "^2.0.0",
+    "@tiptap/starter-kit": "^2.0.0",
+    "@tiptap/extension-placeholder": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@tiptap/core": {
+      "optional": true
+    },
+    "@tiptap/pm": {
+      "optional": true
+    },
+    "@tiptap/starter-kit": {
+      "optional": true
+    },
+    "@tiptap/extension-placeholder": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/dialog.ts src/dropdown.ts src/toast.ts src/clipboard.ts src/theme.ts src/tabs.ts src/accordion.ts src/collapsible.ts src/toggle.ts src/popover.ts src/tooltip.ts src/sheet.ts src/slider.ts src/command.ts src/alert-dialog.ts src/context-menu.ts src/hover-card.ts src/editor.ts src/carousel.ts src/sidebar.ts src/sidebar-mobile.ts src/popover-submenu.ts src/date-picker.ts src/selectable-table.ts src/select.ts src/chart-tooltip.ts --format esm --dts",
+    "dev": "tsup src/*.ts --format esm --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linter configured yet'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false
+}

@@ -1,0 +1,312 @@
+export type ComponentMeta = {
+  title: string
+  description: string
+  dependencies: string[]
+  devDependencies?: string[]
+  registryDependencies?: string[]
+}
+
+export const componentMeta: Record<string, ComponentMeta> = {
+  'form-field': {
+    title: 'Form Field',
+    description: 'Wrapper for form inputs with label, description, and error states',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'segmented-progress': {
+    title: 'Segmented Progress',
+    description: 'A segmented progress bar for compact status visualization',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'sidebar-menu-button': {
+    title: 'Sidebar Menu Button',
+    description: 'Composable sidebar menu button primitives for dashboard shells',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['avatar', 'label'],
+  },
+  'sidebar-item': {
+    title: 'Sidebar Item',
+    description: 'Sidebar navigation link and button items with active states',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['badge'],
+  },
+  'sidebar-collapsible': {
+    title: 'Sidebar Collapsible',
+    description: 'Collapsible sidebar section with trigger and animated content',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['sidebar-item', 'icon'],
+  },
+  icon: {
+    title: 'Icon',
+    description: 'Lucide icon wrapper and reusable icon exports',
+    dependencies: ['lucide'],
+    registryDependencies: [],
+  },
+  // Core components
+  button: {
+    title: 'Button',
+    description: 'A button component with multiple variants and sizes',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  input: {
+    title: 'Input',
+    description: 'A text input component with focus states',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  card: {
+    title: 'Card',
+    description: 'A card container with header, content, and footer sections',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'display-card': {
+    title: 'Display Card',
+    description: 'A display card container with optional heading content',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  badge: {
+    title: 'Badge',
+    description: 'A small status indicator with variants',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'content-card': {
+    title: 'Content Card',
+    description: 'Outer-frame card with muted padding and inner shadowed surface',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'select-custom': {
+    title: 'Select Custom',
+    description: 'Enhanced select with custom dropdown menu, separators, labels, and groups',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: ['icon'],
+  },
+  alert: {
+    title: 'Alert',
+    description: 'An alert component for displaying messages with title and description',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  label: {
+    title: 'Label',
+    description: 'A label component for form controls',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  separator: {
+    title: 'Separator',
+    description: 'A visual divider with horizontal and vertical orientations',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  textarea: {
+    title: 'Textarea',
+    description: 'A multiline text input component',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  checkbox: {
+    title: 'Checkbox',
+    description: 'A checkbox input with custom styling',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'radio-group': {
+    title: 'Radio Group',
+    description: 'A group of radio inputs for single selection',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  switch: {
+    title: 'Switch',
+    description: 'A toggle switch component',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  select: {
+    title: 'Select',
+    description: 'A native select dropdown with custom styling',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['icon'],
+  },
+  table: {
+    title: 'Table',
+    description: 'A table component with header, body, footer, and cell sub-components',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  progress: {
+    title: 'Progress',
+    description: 'A progress bar component',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  spinner: {
+    title: 'Spinner',
+    description: 'A loading spinner indicator',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['icon'],
+  },
+  kbd: {
+    title: 'Kbd',
+    description: 'A keyboard shortcut indicator component',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  avatar: {
+    title: 'Avatar',
+    description: 'An avatar component with image and fallback support',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'avatar-stack': {
+    title: 'Avatar Stack',
+    description: 'Overlapping avatar group with overflow count',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['avatar'],
+  },
+  breadcrumb: {
+    title: 'Breadcrumb',
+    description: 'A breadcrumb navigation component',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['icon'],
+  },
+  pagination: {
+    title: 'Pagination',
+    description: 'A pagination component for navigating pages',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['icon'],
+  },
+  empty: {
+    title: 'Empty',
+    description: 'An empty state component for when there is no content',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  // Interactive components (require @hono-ui/enhance)
+  dialog: {
+    title: 'Dialog',
+    description: 'A modal dialog with overlay, focus trap, and keyboard navigation',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  sheet: {
+    title: 'Sheet',
+    description: 'A slide-in panel from any edge of the screen',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: ['button', 'icon'],
+  },
+  'alert-dialog': {
+    title: 'Alert Dialog',
+    description: 'A modal dialog that requires explicit user action to dismiss',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  tabs: {
+    title: 'Tabs',
+    description: 'Tab navigation with keyboard support and ARIA attributes',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  accordion: {
+    title: 'Accordion',
+    description: 'Collapsible content sections with single or multiple mode',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: ['icon'],
+  },
+  collapsible: {
+    title: 'Collapsible',
+    description: 'A simple expand/collapse container',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  'dropdown-menu': {
+    title: 'Dropdown Menu',
+    description: 'A dropdown menu with keyboard navigation and typeahead',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  popover: {
+    title: 'Popover',
+    description: 'A click-triggered popup with smart positioning',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  tooltip: {
+    title: 'Tooltip',
+    description: 'A hover/focus triggered tooltip with smart positioning',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  'hover-card': {
+    title: 'Hover Card',
+    description: 'Rich content preview on hover with open/close delays',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  'context-menu': {
+    title: 'Context Menu',
+    description: 'A right-click triggered menu with keyboard navigation',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  toggle: {
+    title: 'Toggle',
+    description: 'A two-state toggle button',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  'toggle-group': {
+    title: 'Toggle Group',
+    description: 'A group of toggle buttons with single or multiple selection',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  slider: {
+    title: 'Slider',
+    description: 'A draggable slider with keyboard support',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  editor: {
+    title: 'Editor',
+    description: 'A rich text editor built with Tiptap with support for links and images',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance', '@tiptap/core', '@tiptap/pm', '@tiptap/starter-kit', '@tiptap/extension-link', '@tiptap/extension-image'],
+    registryDependencies: ['icon'],
+  },
+  'date-picker': {
+    title: 'Date Picker',
+    description: 'A calendar date picker with single and range selection modes',
+    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    registryDependencies: [],
+  },
+  chart: {
+    title: 'Chart',
+    description: 'Shared chart utilities wrapping D3 for server-side SVG math',
+    dependencies: ['d3-scale', 'd3-array', 'd3-shape'],
+    registryDependencies: [],
+  },
+  'placeholder-gradient': {
+    title: 'Placeholder Gradient',
+    description: 'A gradient-filled placeholder surface for imagery slots',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'placeholder-logo': {
+    title: 'Placeholder Logo',
+    description: 'Generic SVG logomark + wordmark placeholders for logo clouds and trust sections',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: [],
+  },
+  'blog-post-card': {
+    title: 'Blog Post Card',
+    description: 'Article card with variants for blog listings and features',
+    dependencies: ['clsx', 'tailwind-merge'],
+    registryDependencies: ['avatar', 'badge', 'icon', 'placeholder-gradient'],
+  },
+}

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@hono-ui/enhance - Test Page</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    :root {
+      --background: oklch(98.5% 0 0);
+      --foreground: oklch(14.1% 0.005 285.823);
+      --muted: oklch(96.7% 0.001 286.375);
+      --muted-foreground: oklch(44.2% 0.017 285.786);
+      --border: oklch(92% 0.004 286.32);
+      --primary: oklch(61.09% 0.12 224.9);
+      --primary-foreground: oklch(100% 0 0);
+      --destructive: oklch(58.6% 0.253 17.585);
+      --success: oklch(59.6% 0.145 163.225);
+      --warning: oklch(66.6% 0.179 58.318);
+      --ring: oklch(72.24% 0.13 217.95);
+      --radius: 0.5rem;
+      --input: var(--border);
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    h1 { font-size: 1.875rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.25rem; margin: 2rem 0 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    p { color: var(--muted-foreground); margin-bottom: 1rem; }
+    
+    .test-section { margin-bottom: 2rem; }
+    
+    /* Base button styles */
+    button, [role="button"] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--background);
+      color: var(--foreground);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    button:hover { background: var(--muted); }
+    button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-foreground);
+      border-color: var(--primary);
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    
+    .btn-destructive {
+      background: var(--destructive);
+      color: var(--destructive-foreground);
+      border-color: var(--destructive);
+    }
+
+    /* Input styles (matching our Input component) */
+    input[type="text"], input[type="email"], input[type="password"] {
+      display: flex;
+      height: 2.25rem;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--input);
+      background: transparent;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.875rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"]::placeholder { color: var(--muted-foreground); }
+    .dark input[type="text"], .dark input[type="email"], .dark input[type="password"] {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Dialog / Sheet / Alert Dialog */
+    [data-dialog], [data-sheet], [data-alert-dialog] {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+    }
+    [data-dialog][data-state="open"],
+    [data-sheet][data-state="open"],
+    [data-alert-dialog][data-state="open"] {
+      display: block;
+    }
+    
+    /* Overlay with fade animation */
+    [data-dialog-overlay], [data-sheet-overlay], [data-alert-dialog-overlay] {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.15s ease-out;
+    }
+    [data-dialog][data-state="closed"] [data-dialog-overlay],
+    [data-sheet][data-state="closed"] [data-sheet-overlay],
+    [data-alert-dialog][data-state="closed"] [data-alert-dialog-overlay] {
+      animation: fadeOut 0.15s ease-out;
+    }
+    
+    /* Dialog content with zoom + fade animation */
+    [data-dialog-content], [data-alert-dialog-content] {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 425px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: dialogIn 0.2s ease-out;
+    }
+    [data-dialog][data-state="closed"] [data-dialog-content],
+    [data-alert-dialog][data-state="closed"] [data-alert-dialog-content] {
+      animation: dialogOut 0.15s ease-out;
+    }
+
+    /* Dialog header & footer spacing (shadcn style) */
+    [data-dialog-content] h3, [data-alert-dialog-content] h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    [data-dialog-content] .dialog-description,
+    [data-alert-dialog-content] .dialog-description {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin: 0.375rem 0 0 0;
+    }
+    [data-dialog-content] .dialog-body,
+    [data-alert-dialog-content] .dialog-body {
+      padding: 1rem 0;
+    }
+    [data-dialog-content] .dialog-footer,
+    [data-alert-dialog-content] .dialog-footer {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      [data-dialog-content] .dialog-footer,
+      [data-alert-dialog-content] .dialog-footer {
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+    }
+    
+    /* Sheet content with slide animation */
+    [data-sheet-content] {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 75%;
+      max-width: 400px;
+      background: var(--background);
+      border-left: 1px solid var(--border);
+      padding: 1.5rem;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+      animation: slideInRight 0.3s ease-out;
+    }
+    [data-sheet][data-sheet-side="right"] [data-sheet-content] { right: 0; }
+    [data-sheet][data-sheet-side="left"] [data-sheet-content] { 
+      left: 0; 
+      border-left: none; 
+      border-right: 1px solid var(--border);
+      animation: slideInLeft 0.3s ease-out;
+    }
+    [data-sheet][data-state="closed"] [data-sheet-content] {
+      animation: slideOutRight 0.2s ease-out;
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes dialogIn { 
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); } 
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); } 
+    }
+    @keyframes dialogOut { 
+      from { opacity: 1; transform: translate(-50%, -50%) scale(1); } 
+      to { opacity: 0; transform: translate(-50%, -50%) scale(0.95); } 
+    }
+    @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    @keyframes slideOutRight { from { transform: translateX(0); } to { transform: translateX(100%); } }
+    @keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+    @keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+    
+    /* Dropdown */
+    [data-dropdown] { position: relative; display: inline-block; }
+    [data-dropdown-content] {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.25rem;
+      min-width: 160px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+    }
+    [data-dropdown-content][data-state="closed"] { display: none; }
+    [data-dropdown-item] {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: calc(var(--radius) - 2px);
+    }
+    [data-dropdown-item][data-highlighted="true"] { background: var(--muted); }
+    [data-dropdown-separator] { height: 1px; background: var(--border); margin: 0.25rem 0; }
+    
+    /* Tabs - shadcn style with muted background list */
+    [data-tabs-list] {
+      display: inline-flex;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      border-radius: calc(var(--radius) + 2px);
+      background: var(--muted);
+      padding: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    [data-tabs-trigger] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: none;
+      border-radius: calc(var(--radius));
+      background: transparent;
+      color: var(--muted-foreground);
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    [data-tabs-trigger]:hover {
+      color: var(--foreground);
+    }
+    [data-tabs-trigger][data-state="active"] {
+      background: var(--background);
+      color: var(--foreground);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    [data-tabs-content][data-state="inactive"] { display: none; }
+    [data-tabs-content] {
+      padding: 1rem 0;
+    }
+    
+    /* Accordion - shadcn style */
+    [data-accordion] {
+      width: 100%;
+    }
+    [data-accordion-item] { 
+      border-bottom: 1px solid var(--border); 
+    }
+    [data-accordion-trigger] {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      padding: 1rem 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: text-decoration 0.15s;
+    }
+    [data-accordion-trigger]:hover {
+      text-decoration: underline;
+      background: transparent;
+    }
+    /* Chevron icon */
+    [data-accordion-trigger]::after {
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+      margin-left: 1rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s ease;
+    }
+    [data-accordion-item][data-state="open"] [data-accordion-trigger]::after { 
+      transform: rotate(180deg);
+    }
+    [data-accordion-content] { 
+      overflow: hidden;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      padding-bottom: 1rem;
+    }
+    
+    /* Collapsible */
+    [data-collapsible-content][data-state="closed"] { display: none; }
+    
+    /* Toggle */
+    [data-toggle][data-state="on"], [data-toggle-item][data-state="on"] {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+    [data-toggle-group] { display: flex; gap: 0.25rem; }
+    
+    /* Popover / Tooltip / Hover Card - Fixed positioning for floating elements */
+    [data-popover], [data-tooltip], [data-hover-card] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: max-content;
+      max-width: 320px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+      font-size: 0.875rem;
+    }
+    
+    /* Slider */
+    [data-slider] { position: relative; width: 200px; height: 20px; }
+    [data-slider-track] {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 6px;
+      background: var(--muted);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    [data-slider-range] {
+      position: absolute;
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    [data-slider-thumb] {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: var(--primary);
+      border: 2px solid var(--background);
+      border-radius: 50%;
+      cursor: grab;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    [data-slider-thumb]:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+    
+    /* Command */
+    [data-command] {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--background);
+    }
+    [data-command-input] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      outline: none;
+      background: transparent;
+      color: var(--foreground);
+    }
+    [data-command-input]::placeholder { color: var(--muted-foreground); }
+    [data-command-list] { max-height: 200px; overflow-y: auto; padding: 0.25rem; }
+    [data-command-empty] { padding: 1rem; text-align: center; color: var(--muted-foreground); }
+    [data-command-group-heading] {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+    }
+    [data-command-item] {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: calc(var(--radius) - 2px);
+      background: transparent;
+      color: var(--foreground);
+    }
+    [data-command-item][data-highlighted="true"] { background: var(--muted); }
+    
+    /* Context Menu */
+    [data-context-menu] {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.25rem;
+      min-width: 160px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+    }
+    [data-context-menu-item] {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: calc(var(--radius) - 2px);
+      background: transparent;
+    }
+    [data-context-menu-item][data-highlighted="true"] { background: var(--muted); }
+    [data-context-menu-trigger] {
+      padding: 2rem;
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+      color: var(--muted-foreground);
+    }
+    
+    /* Toast Container - bottom-right positioning */
+    [data-toast-container] {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 420px;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    /* Toast base styles */
+    [data-toast] {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--background);
+      color: var(--foreground);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: toastIn 0.3s ease-out;
+      pointer-events: auto;
+    }
+    [data-toast].toast-hiding {
+      animation: toastOut 0.2s ease-out forwards;
+    }
+    /* Toast variants */
+    [data-toast][data-toast-type="success"] {
+      border-color: var(--success);
+      background: color-mix(in srgb, var(--success) 10%, var(--background));
+    }
+    [data-toast][data-toast-type="success"]::before {
+      content: "✓";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--success);
+      color: var(--success-foreground);
+      font-size: 0.75rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    [data-toast][data-toast-type="error"] {
+      border-color: var(--destructive);
+      background: color-mix(in srgb, var(--destructive) 10%, var(--background));
+    }
+    [data-toast][data-toast-type="error"]::before {
+      content: "✕";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--destructive);
+      color: var(--destructive-foreground);
+      font-size: 0.75rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    [data-toast][data-toast-type="warning"] {
+      border-color: var(--warning);
+      background: color-mix(in srgb, var(--warning) 10%, var(--background));
+    }
+    [data-toast][data-toast-type="warning"]::before {
+      content: "!";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--warning);
+      color: var(--warning-foreground);
+      font-size: 0.75rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    
+    .inline-flex { display: inline-flex; gap: 0.5rem; align-items: center; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    label { font-size: 0.875rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <h1>@hono-ui/enhance Test Page</h1>
+  <p>Interactive tests for all enhance functions. Open DevTools console for debug info.</p>
+  
+  <button data-theme-toggle>Toggle Theme</button>
+
+  <!-- Dialog -->
+  <section class="test-section">
+    <h2>Dialog</h2>
+    <p>Modal with focus trap, Escape to close, overlay click to close.</p>
+    <button data-dialog-trigger="test-dialog">Open Dialog</button>
+    
+    <div data-dialog="test-dialog" data-state="closed">
+      <div data-dialog-overlay></div>
+      <div data-dialog-content>
+        <h3>Edit profile</h3>
+        <p class="dialog-description">Make changes to your profile here. Click save when you're done.</p>
+        <div class="dialog-body">
+          <div class="grid" style="gap: 1rem;">
+            <div class="grid" style="gap: 0.5rem;">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Enter your name" />
+            </div>
+            <div class="grid" style="gap: 0.5rem;">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="@username" />
+            </div>
+          </div>
+        </div>
+        <div class="dialog-footer">
+          <button data-dialog-close>Cancel</button>
+          <button class="btn-primary" data-dialog-close>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sheet -->
+  <section class="test-section">
+    <h2>Sheet</h2>
+    <p>Slide-in panel from edge.</p>
+    <button data-sheet-trigger="test-sheet">Open Sheet (Right)</button>
+    
+    <div data-sheet="test-sheet" data-sheet-side="right" data-state="closed">
+      <div data-sheet-overlay></div>
+      <div data-sheet-content>
+        <h3 style="margin: 0 0 1rem">Sheet Panel</h3>
+        <p>Content slides in from the right.</p>
+        <button data-sheet-close>Close Sheet</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alert Dialog -->
+  <section class="test-section">
+    <h2>Alert Dialog</h2>
+    <p>Requires explicit action - no Escape/overlay close.</p>
+    <button data-alert-dialog-trigger="test-alert">Delete Item</button>
+    
+    <div data-alert-dialog="test-alert" data-state="closed">
+      <div data-alert-dialog-overlay></div>
+      <div data-alert-dialog-content>
+        <h3>Are you absolutely sure?</h3>
+        <p class="dialog-description">This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+        <div class="dialog-footer" style="margin-top: 1rem;">
+          <button data-alert-dialog-cancel>Cancel</button>
+          <button class="btn-destructive" data-alert-dialog-action>Delete account</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dropdown -->
+  <section class="test-section">
+    <h2>Dropdown</h2>
+    <p>Keyboard nav: Arrow keys, Home/End, typeahead, Enter to select.</p>
+    <div data-dropdown>
+      <button data-dropdown-trigger>Open Menu ▾</button>
+      <div data-dropdown-content data-state="closed">
+        <button data-dropdown-item>New File</button>
+        <button data-dropdown-item>Open...</button>
+        <button data-dropdown-item>Save</button>
+        <div data-dropdown-separator></div>
+        <button data-dropdown-item>Settings</button>
+        <button data-dropdown-item>Help</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <section class="test-section">
+    <h2>Tabs</h2>
+    <p>Arrow key navigation, proper ARIA.</p>
+    <div data-tabs data-tabs-default="tab1">
+      <div data-tabs-list>
+        <button data-tabs-trigger="tab1">Account</button>
+        <button data-tabs-trigger="tab2">Password</button>
+        <button data-tabs-trigger="tab3">Settings</button>
+      </div>
+      <div data-tabs-content="tab1">
+        <p>Manage your account settings and preferences.</p>
+      </div>
+      <div data-tabs-content="tab2">
+        <p>Change your password and security settings.</p>
+      </div>
+      <div data-tabs-content="tab3">
+        <p>Configure application settings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion -->
+  <section class="test-section">
+    <h2>Accordion</h2>
+    <p>Single mode - only one open at a time.</p>
+    <div data-accordion data-accordion-type="single">
+      <div data-accordion-item="faq1">
+        <button data-accordion-trigger>What is Hono UI?</button>
+        <div data-accordion-content>
+          Hono UI is a shadcn-style component library for Hono-first stacks.
+        </div>
+      </div>
+      <div data-accordion-item="faq2">
+        <button data-accordion-trigger>How does it work?</button>
+        <div data-accordion-content>
+          Components are SSR-first with optional progressive enhancement via @hono-ui/enhance.
+        </div>
+      </div>
+      <div data-accordion-item="faq3">
+        <button data-accordion-trigger>Is it free?</button>
+        <div data-accordion-content>
+          Core primitives are free. Pro blocks and starters are paid.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collapsible -->
+  <section class="test-section">
+    <h2>Collapsible</h2>
+    <p>Simple expand/collapse.</p>
+    <div data-collapsible>
+      <button data-collapsible-trigger>Toggle Details</button>
+      <div data-collapsible-content>
+        <div class="mt-2" style="padding: 1rem; background: var(--muted); border-radius: var(--radius);">
+          This content can be collapsed and expanded.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toggle -->
+  <section class="test-section">
+    <h2>Toggle & Toggle Group</h2>
+    <p>Single toggle and grouped toggles.</p>
+    <div class="mb-4">
+      <button data-toggle>Bold</button>
+    </div>
+    <div data-toggle-group data-toggle-type="single">
+      <button data-toggle-item="left">Left</button>
+      <button data-toggle-item="center">Center</button>
+      <button data-toggle-item="right">Right</button>
+    </div>
+  </section>
+
+  <!-- Popover -->
+  <section class="test-section">
+    <h2>Popover</h2>
+    <p>Click-triggered popup with focus trap.</p>
+    <button data-popover-trigger="test-popover">Open Popover</button>
+    
+    <div data-popover="test-popover" data-popover-side="bottom" data-popover-align="start">
+      <div data-popover-content>
+        <p style="margin: 0 0 0.5rem; font-weight: 500;">Popover Content</p>
+        <p style="margin: 0;">Click outside or press Escape to close.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tooltip -->
+  <section class="test-section">
+    <h2>Tooltip</h2>
+    <p>Hover/focus triggered with delay.</p>
+    <button data-tooltip-trigger="test-tooltip">Hover me</button>
+    
+    <div data-tooltip="test-tooltip" data-tooltip-side="top">
+      This is a tooltip!
+    </div>
+  </section>
+
+  <!-- Hover Card -->
+  <section class="test-section">
+    <h2>Hover Card</h2>
+    <p>Rich content on hover with open/close delay.</p>
+    <a href="javascript:void(0)" data-hover-card-trigger="user-card" style="color: var(--primary); font-weight: 500;">@johndoe</a>
+    
+    <div data-hover-card="user-card" data-hover-card-side="bottom">
+      <div data-hover-card-content>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <div style="width: 40px; height: 40px; background: var(--muted); border-radius: 50%;"></div>
+          <div>
+            <div style="font-weight: 600;">John Doe</div>
+            <div style="font-size: 0.75rem; color: var(--muted-foreground);">@johndoe</div>
+          </div>
+        </div>
+        <p style="margin: 0.75rem 0 0; font-size: 0.875rem;">Full-stack developer. Building cool stuff with Hono.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slider -->
+  <section class="test-section">
+    <h2>Slider</h2>
+    <p>Drag or use keyboard (arrows, Home/End, PageUp/Down).</p>
+    <div data-slider data-slider-min="0" data-slider-max="100" data-slider-value="50" data-slider-step="1">
+      <div data-slider-track>
+        <div data-slider-range></div>
+        <div data-slider-thumb tabindex="0"></div>
+      </div>
+    </div>
+    <p class="mt-2">Value: <span id="slider-value">50</span></p>
+  </section>
+
+  <!-- Command -->
+  <section class="test-section">
+    <h2>Command Palette</h2>
+    <p>Searchable list with keyboard navigation.</p>
+    <div data-command style="max-width: 350px;">
+      <input data-command-input placeholder="Type a command or search..." />
+      <div data-command-list>
+        <div data-command-empty hidden>No results found.</div>
+        <div data-command-group>
+          <div data-command-group-heading>Suggestions</div>
+          <button data-command-item data-command-value="new-file">New File</button>
+          <button data-command-item data-command-value="new-folder">New Folder</button>
+        </div>
+        <div data-command-group>
+          <div data-command-group-heading>Actions</div>
+          <button data-command-item data-command-value="copy">Copy</button>
+          <button data-command-item data-command-value="paste">Paste</button>
+          <button data-command-item data-command-value="delete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Context Menu -->
+  <section class="test-section">
+    <h2>Context Menu</h2>
+    <p>Right-click the area below.</p>
+    <div data-context-menu-trigger="test-context">
+      Right-click here
+    </div>
+    
+    <div data-context-menu="test-context" data-state="closed">
+      <button data-context-menu-item>Cut</button>
+      <button data-context-menu-item>Copy</button>
+      <button data-context-menu-item>Paste</button>
+      <div data-context-menu-separator style="height: 1px; background: var(--border); margin: 0.25rem 0;"></div>
+      <button data-context-menu-item>Delete</button>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <section class="test-section">
+    <h2>Toast</h2>
+    <p>Notification system.</p>
+    <button onclick="showToast()">Show Toast</button>
+    <button onclick="showToast('success')">Success Toast</button>
+    <button onclick="showToast('error')">Error Toast</button>
+  </section>
+
+  <!-- Clipboard -->
+  <section class="test-section">
+    <h2>Clipboard</h2>
+    <p>Copy text to clipboard.</p>
+    <code id="code-sample" style="display: block; padding: 1rem; background: var(--muted); border-radius: var(--radius); margin-bottom: 0.5rem;">
+      pnpm add @hono-ui/enhance
+    </code>
+    <button data-clipboard data-clipboard-target="#code-sample">Copy Code</button>
+    <span id="copy-status" style="margin-left: 0.5rem; color: var(--muted-foreground);"></span>
+  </section>
+
+  <div data-toast-container></div>
+
+  <script type="module">
+    import {
+      dialog,
+      sheet,
+      alertDialog,
+      dropdown,
+      tabs,
+      accordion,
+      collapsible,
+      toggle,
+      toggleGroup,
+      popover,
+      tooltip,
+      hoverCard,
+      slider,
+      command,
+      contextMenu,
+      toast,
+      clipboard,
+      theme
+    } from './dist/index.js'
+
+    // Initialize all enhance functions
+    dialog()
+    sheet()
+    alertDialog()
+    dropdown()
+    tabs()
+    accordion()
+    collapsible()
+    toggle()
+    toggleGroup()
+    popover()
+    tooltip()
+    hoverCard()
+    slider()
+    command()
+    contextMenu()
+    toast.init()
+    clipboard()
+    theme()
+
+    console.log('All enhance functions initialized!')
+
+    // Slider value display
+    document.querySelector('[data-slider]')?.addEventListener('slider-change', (e) => {
+      document.getElementById('slider-value').textContent = e.detail.value
+    })
+
+    // Command select handler
+    document.querySelector('[data-command]')?.addEventListener('command-select', (e) => {
+      console.log('Command selected:', e.detail.value)
+      toast.show({ message: `Selected: ${e.detail.value}`, type: 'success' })
+    })
+
+    // Alert dialog action handler
+    document.querySelector('[data-alert-dialog]')?.addEventListener('alert-dialog-action', () => {
+      toast.show({ message: 'Item deleted!', type: 'error' })
+    })
+
+    // Clipboard feedback
+    document.querySelector('[data-clipboard]')?.addEventListener('click', () => {
+      const status = document.getElementById('copy-status')
+      status.textContent = 'Copied!'
+      setTimeout(() => status.textContent = '', 2000)
+    })
+
+    // Expose toast for button onclick
+    window.showToast = (type = 'default') => {
+      const messages = {
+        default: 'This is a toast notification',
+        success: 'Operation completed successfully!',
+        error: 'Something went wrong!'
+      }
+      toast.show({ message: messages[type], type, duration: 3000 })
+    }
+  </script>
+</body>
+</html>

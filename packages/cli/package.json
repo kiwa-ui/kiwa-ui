@@ -1,0 +1,32 @@
+{
+  "name": "@hono-ui/cli",
+  "version": "1.0.1",
+  "description": "CLI for adding Hono UI components to your project",
+  "type": "module",
+  "bin": {
+    "hono-ui": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts src/utils/tsconfig.ts --format esm --dts && rm -rf dist/templates && cp -R ../../templates dist/templates",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linter configured yet'",
+    "test": "pnpm build && node --test"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "jsonc-parser": "^3.3.1",
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
