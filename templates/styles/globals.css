@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://rsms.me/inter/inter.css");
 @import "./swirl-images.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -81,6 +82,8 @@
   --animate-zoom-out: zoom-out 0.15s ease-out;
   --animate-scroll: scroll 30s linear infinite;
   --animate-scroll-reverse: scroll-reverse 30s linear infinite;
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-caret-blink: caret-blink 1s step-end infinite;
 
     --shadow-xs:
         0 0 0 1px oklch(20.5% 0 0 / 0.05),
@@ -301,6 +304,15 @@
 @keyframes scroll-reverse {
   from { transform: translateX(-33.333%); }
   to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+
+@keyframes caret-blink {
+  0%, 70%, 100% { opacity: 1; }
+  20%, 50% { opacity: 0; }
 }
 
 /* Primary mesh gradient */

@@ -11,6 +11,14 @@ rather than version.
 
 ### Fixed
 
+- CLI 1.1.2 — fresh init projects now load Inter automatically via
+  `@import url("https://rsms.me/inter/inter.css")` in `globals.css`. The
+  template's heading rule sets `font-weight: 550` (a variation-axis
+  weight Inter supports), but without Inter loaded browsers round 550 to
+  bold. Headings now render at the intended weight out of the box.
+  Also added the `--animate-caret-blink` token and `@keyframes
+  caret-blink` rule so the AI chat-message cursor blinks as intended,
+  plus `--animate-pulse` for parity with the docs CSS.
 - CLI 1.1.1 — `init` now actually copies `styles/swirl-images.css` into the
   scaffolded project. The 1.1.0 release shipped the template file but
   forgot to wire it into the init command, leaving `globals.css` with a

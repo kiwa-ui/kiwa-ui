@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.2 — 2026-04-28
+
+- Fix headings rendering as browser-default bold instead of the intended
+  font-weight 550 in fresh init projects. The template `globals.css` sets
+  `h1`–`h6` to weight 550 to match the docs site, but that's a
+  variation-axis weight only supported by InterVariable. Without Inter
+  loaded, browsers round 550 to bold (700). Templates now `@import` Inter
+  from `https://rsms.me/inter/inter.css` so the font is available
+  automatically. Customers who prefer self-hosting can swap the import
+  for their own font CSS.
+- Add missing `--animate-caret-blink` token and `@keyframes caret-blink`
+  to `templates/styles/globals.css`. The `chat-message` (pro/ai) block
+  uses `animate-caret-blink` for its blinking cursor; without the
+  keyframes the cursor sat static.
+- Add `--animate-pulse` token and `@keyframes pulse` for parity with the
+  docs site (no current registry block uses it but the rule is widely
+  expected).
+
 ## 1.1.1 — 2026-04-28
 
 - Fix `init` not actually scaffolding `styles/swirl-images.css`. The 1.1.0
