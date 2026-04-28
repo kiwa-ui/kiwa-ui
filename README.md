@@ -8,6 +8,8 @@
 
 Hono UI is a component library and CLI built specifically for [Hono](https://hono.dev/)'s JSX renderer. Every component renders on the server with zero client JavaScript by default. Optional progressive enhancement via `@hono-ui/enhance`. Runs on **Bun, Deno, Cloudflare Workers, and Node.js** — the same code, every runtime.
 
+> **Independent project.** Hono UI is not affiliated with, sponsored by, or endorsed by the Hono team or hono.dev. Hono is a trademark of its respective owner.
+
 → **[honoui.com](https://honoui.com)** · [docs](https://honoui.com/docs) · [pricing](https://honoui.com/pricing) · [@AdamTossell](https://x.com/AdamTossell)
 
 ---
