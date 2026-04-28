@@ -7,6 +7,36 @@ tracked here.
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
 
+## 2026-04-28 (later)
+
+### Fixed
+
+- CLI 1.1.1 — `init` now actually copies `styles/swirl-images.css` into the
+  scaffolded project. The 1.1.0 release shipped the template file but
+  forgot to wire it into the init command, leaving `globals.css` with a
+  dangling `@import` and pro blocks rendering without their swirl
+  backgrounds.
+- Registry: welcome email now includes the `npx @hono-ui/cli@latest init`
+  step before the `add` step, and the `add` example uses the correct
+  syntax (`add hero-03`, not the non-existent `add block hero-03`).
+
+### Changed
+
+- Pro blocks `pricing-06` and `cta-03` now auto-apply
+  `target="_blank" rel="noopener noreferrer"` to any CTA link with an
+  `http(s)` URL (matches the existing `footer-02` behaviour). Internal
+  links are unaffected. Backward compatible.
+
+### Other CTA tweaks
+
+- `cta-02` switched to equal-width 2-column grid with `gap-16` (64px),
+  added an eyebrow prop defaulting to `"Get started"`, and lengthened the
+  default description to span two lines.
+- `cta-04` left column inner padding bumped from `lg:py-20` to `lg:py-24`
+  (80px → 96px).
+- `cta-05` description now uses `text-sm`; left column max-width widened
+  from `lg:max-w-xs` to `lg:max-w-sm` for breathing room around the title.
+
 ## 2026-04-28
 
 ### Added

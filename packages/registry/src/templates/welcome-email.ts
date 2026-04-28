@@ -27,7 +27,8 @@ export function renderWelcomeEmail({ licenseKey, orderId }: WelcomeEmailParams):
                 <h2 style="margin:0 0 12px 0;font-size:16px;font-weight:600;">How to use it</h2>
                 <ol style="margin:0 0 24px 20px;padding:0;font-size:14px;line-height:1.7;color:#333;">
                   <li style="margin-bottom:10px;">Set your license key as an environment variable in the shell where you run the CLI:<br /><code style="display:inline-block;margin-top:6px;padding:6px 10px;background:#f3f3f0;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;">export HONO_UI_TOKEN=${licenseKey}</code></li>
-                  <li style="margin-bottom:10px;">Add any pro block to your project:<br /><code style="display:inline-block;margin-top:6px;padding:6px 10px;background:#f3f3f0;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;">npx @hono-ui/cli add block hero-03</code></li>
+                  <li style="margin-bottom:10px;">Initialize Hono UI in a fresh project (skip if you already ran <code style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">init</code>):<br /><code style="display:inline-block;margin-top:6px;padding:6px 10px;background:#f3f3f0;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;">npx @hono-ui/cli@latest init</code></li>
+                  <li style="margin-bottom:10px;">Add any pro block to your project:<br /><code style="display:inline-block;margin-top:6px;padding:6px 10px;background:#f3f3f0;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;">npx @hono-ui/cli@latest add hero-03</code></li>
                   <li>Browse the full catalogue at <a href="https://honoui.com/docs" style="color:#0066cc;text-decoration:underline;">honoui.com/docs</a>.</li>
                 </ol>
 
@@ -58,11 +59,15 @@ How to use it:
 
    export HONO_UI_TOKEN=${licenseKey}
 
-2. Add any pro block to your project:
+2. Initialize Hono UI in a fresh project (skip if you already ran init):
 
-   npx @hono-ui/cli add block hero-03
+   npx @hono-ui/cli@latest init
 
-3. Browse the full catalogue at https://honoui.com/docs.
+3. Add any pro block to your project:
+
+   npx @hono-ui/cli@latest add hero-03
+
+4. Browse the full catalogue at https://honoui.com/docs.
 
 Order reference: ${orderId}
 

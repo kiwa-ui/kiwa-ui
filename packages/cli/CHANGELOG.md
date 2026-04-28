@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 — 2026-04-28
+
+- Fix `init` not actually scaffolding `styles/swirl-images.css`. The 1.1.0
+  release added the file to `templates/` but never wired it into the init
+  command's file list, so customers ended up with `globals.css` importing a
+  non-existent `./swirl-images.css`. Pro blocks that use
+  `<PlaceholderGradient>` rendered without their swirl backgrounds.
+
 ## 1.1.0 — 2026-04-28
 
 - `init` now pins `lucide` to `^0.575.0` instead of installing the latest

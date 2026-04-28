@@ -24,7 +24,7 @@ function resolveTemplatesRoot() {
     resolve(process.cwd(), 'templates'),
   ]
 
-  const templatePaths = ['lib/utils.ts', 'styles/globals.css']
+  const templatePaths = ['lib/utils.ts', 'styles/globals.css', 'styles/swirl-images.css']
 
   for (const candidate of candidates) {
     if (templatePaths.every((path) => existsSync(join(candidate, path)))) {
@@ -68,11 +68,13 @@ export async function init(options: InitOptions) {
   console.log(pc.dim('Loading template files...'))
   let utilsTemplate = ''
   let globalsTemplate = ''
+  let swirlImagesTemplate = ''
 
   try {
-    ;[utilsTemplate, globalsTemplate] = await Promise.all([
+    ;[utilsTemplate, globalsTemplate, swirlImagesTemplate] = await Promise.all([
       readTemplateFile('lib/utils.ts'),
       readTemplateFile('styles/globals.css'),
+      readTemplateFile('styles/swirl-images.css'),
     ])
   } catch (error) {
     console.error(pc.red('Failed to read template files from /templates.'))
@@ -86,6 +88,7 @@ export async function init(options: InitOptions) {
   console.log(pc.dim('Writing template files...'))
   await writeFile(join(cwd, 'lib/utils.ts'), utilsTemplate)
   await writeFile(join(cwd, 'styles/globals.css'), globalsTemplate)
+  await writeFile(join(cwd, 'styles/swirl-images.css'), swirlImagesTemplate)
 
   // 6. Write config
   await writeConfig(getDefaultConfig(), cwd)

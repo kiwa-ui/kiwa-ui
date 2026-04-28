@@ -4,6 +4,7 @@ import { getButtonClasses } from '@/components/ui/button'
 import { DisplayCard } from '@/components/ui/display-card'
 
 type Cta02Props = {
+  eyebrow?: string
   title?: string
   description?: string
   primaryCta?: {
@@ -18,8 +19,9 @@ type Cta02Props = {
 }
 
 export const Cta02: FC<Cta02Props> = ({
+  eyebrow = 'Get started',
   title = 'Accelerate your development workflow',
-  description = '30-day free trial with full access. No credit card required.',
+  description = 'Start a 30-day free trial with full access to every feature. No credit card required, no setup fees, cancel anytime.',
   primaryCta = { label: 'Try it free', href: '#' },
   secondaryCta = { label: 'Learn more', href: '#' },
   class: className,
@@ -27,14 +29,19 @@ export const Cta02: FC<Cta02Props> = ({
   <section class={cn('py-16 md:py-24', className)}>
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <DisplayCard class="p-8 sm:p-10">
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div class="flex flex-col gap-4">
-            <h2 class="max-w-md text-3xl tracking-tight sm:text-4xl">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+          <div class="flex flex-col gap-3">
+            {eyebrow && (
+              <p class="text-xs font-medium uppercase tracking-wide text-primary">
+                {eyebrow}
+              </p>
+            )}
+            <h2 class="text-3xl tracking-tight sm:text-4xl">
               {title}
             </h2>
           </div>
-          <div class="flex shrink-0 flex-col gap-6">
-            <p class="max-w-xs text-base text-foreground-muted">
+          <div class="flex flex-col gap-6">
+            <p class="text-base text-foreground-muted">
               {description}
             </p>
             <div class="flex gap-3">
