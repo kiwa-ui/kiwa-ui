@@ -38,3 +38,13 @@ project:
 The **paid Pro blocks** under `registry/blocks/pro/` are covered by a separate
 commercial license. See `LICENSE-PRO.md` for terms that apply to Pro blocks,
 or visit https://honoui.com/license for the web version.
+
+---
+
+## Trademarks
+
+This software contains stylized representations of third-party brand marks
+(GitHub, Facebook, Instagram, LinkedIn, X, YouTube) in
+`registry/ui/social-icon.tsx`. Those marks remain the trademarks of their
+respective owners and are included only to identify links to those platforms.
+Use of these marks must comply with each platform's brand guidelines.

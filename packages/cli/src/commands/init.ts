@@ -114,10 +114,10 @@ export async function init(options: InitOptions) {
 
   // 8. Install dependencies
   console.log(pc.dim('Installing dependencies...'))
-  const installCmd = getInstallCommand(pm, ['clsx', 'tailwind-merge', 'lucide'])
+  const installCmd = getInstallCommand(pm, ['clsx', 'tailwind-merge', 'lucide@^0.575.0'])
   try {
     await execAsync(installCmd, cwd)
-    console.log(pc.dim('Installed clsx, tailwind-merge, lucide'))
+    console.log(pc.dim('Installed clsx, tailwind-merge, lucide@^0.575.0'))
   } catch (error) {
     console.warn(pc.yellow('Warning: Could not install dependencies automatically.'))
     console.warn(pc.yellow(`Run: ${installCmd}`))

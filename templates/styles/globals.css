@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./swirl-images.css";
 
 @custom-variant dark (&:is(.dark *));
 

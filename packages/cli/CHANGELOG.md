@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.1.0 — 2026-04-28
+
+- `init` now pins `lucide` to `^0.575.0` instead of installing the latest
+  version. Future lucide releases (which may remove icons due to trademark
+  concerns) cannot break Hono UI components. Existing projects are
+  unaffected; the pin only applies on first `init`.
+- `init` now scaffolds `styles/swirl-images.css` and imports it from
+  `styles/globals.css`. Pro blocks that use `<PlaceholderGradient>` now
+  render their swirl backgrounds out of the box. Adds ~313KB to the
+  scaffolded `styles/` directory; remove the import if you don't use any
+  swirl-based blocks.
+- Pairs with the registry split that moves brand icons (`FacebookIcon`,
+  `GithubIcon`, `InstagramIcon`, `LinkedInIcon`, `XLogoIcon`,
+  `YoutubeIcon`) into a new `@/components/ui/social-icon` primitive. The
+  CLI auto-pulls `social-icon.tsx` when a customer adds any block that
+  uses brand marks (e.g. `footer-02`, `team-03`, `dashboard-profile`).
+
 ## 1.0.1 — 2026-04-24
 
 - Fix `init` failing with `ENOENT` on fresh installs. Templates are now

@@ -5,9 +5,9 @@ import {
   GithubIcon,
   InstagramIcon,
   LinkedInIcon,
-  TwitterIcon,
+  XLogoIcon,
   YoutubeIcon,
-} from '@/components/ui/icon'
+} from '@/components/ui/social-icon'
 
 type NavLink = {
   label: string
@@ -33,7 +33,8 @@ type Footer01Props = {
 }
 
 const socialIcons: Record<SocialLink['icon'], FC> = {
-  twitter: () => <TwitterIcon class="size-4" />,
+  twitter: () => <XLogoIcon class="size-4" />,
+  x: () => <XLogoIcon class="size-4" />,
   github: () => <GithubIcon class="size-4" />,
   linkedin: () => <LinkedInIcon class="size-4" />,
   instagram: () => <InstagramIcon class="size-4" />,

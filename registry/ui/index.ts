@@ -43,6 +43,12 @@ export const componentMeta: Record<string, ComponentMeta> = {
     dependencies: ['lucide'],
     registryDependencies: [],
   },
+  'social-icon': {
+    title: 'Social icon',
+    description: 'Filled brand-mark icons (X, GitHub, Facebook, Instagram, LinkedIn, YouTube)',
+    dependencies: [],
+    registryDependencies: [],
+  },
   // Core components
   button: {
     title: 'Button',

@@ -7,6 +7,34 @@ tracked here.
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
 
+## 2026-04-28
+
+### Added
+
+- New `social-icon` UI primitive with filled brand marks for GitHub,
+  Facebook, Instagram, LinkedIn, YouTube, and X. Independent of `lucide`
+  so future upstream changes can never break brand icons.
+- `placeholder-gradient` accepts a `position` prop for non-centered swirl
+  backgrounds (used by `hero-06`).
+- Init template now scaffolds `styles/swirl-images.css` with the swirl
+  gradient CSS variables, so pro blocks that use `<PlaceholderGradient>`
+  render correctly out of the box.
+
+### Changed
+
+- ⚠ Breaking: brand icons (`FacebookIcon`, `GithubIcon`, `InstagramIcon`,
+  `LinkedInIcon`, `YoutubeIcon`) moved from `@/components/ui/icon` to a
+  new `@/components/ui/social-icon`. Update any direct imports.
+- ⚠ Breaking: `TwitterIcon` renamed to `XLogoIcon` and moved to
+  `@/components/ui/social-icon`. The X platform brand mark replaces the
+  Twitter bird icon.
+- `hero-03`, `hero-04`, `hero-06`, and `features-04` refactored to use
+  `<PlaceholderGradient>` instead of inline `var(--swirl-N)` styles.
+  Makes the `placeholder-gradient` dependency explicit so the CLI auto-pulls
+  it on `cli add <block>`.
+- CLI 1.1.0 — `init` now pins `lucide@^0.575.0` and scaffolds
+  `styles/swirl-images.css`. See `packages/cli/CHANGELOG.md` for details.
+
 ## 2026-04-27
 
 ### Added
