@@ -8,7 +8,7 @@ const REGISTRY_BLOCKS_FREE_DIR = path.join(ROOT_DIR, 'registry/blocks/free')
 const REGISTRY_BLOCKS_PRO_DIR = path.join(ROOT_DIR, 'registry/blocks/pro')
 const OUTPUT_FILE = path.join(ROOT_DIR, 'packages/registry/src/generated/components.ts')
 
-// Lib files that are always available via `hono-ui init` (no registry entry needed)
+// Lib files that are always available via `kiwa-ui init` (no registry entry needed)
 const BUILT_IN_LIBS = new Set(['utils'])
 
 type ComponentFile = {

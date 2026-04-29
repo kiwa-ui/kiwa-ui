@@ -1,13 +1,13 @@
-# Hono UI Pro — Commercial License
+# Kiwa UI Pro — Commercial License
 
 **Version 1.0 · Effective 2026-04-24**
 
 This commercial license agreement ("Agreement") governs your use of the
-paid "Pro" components and blocks ("Pro Blocks") distributed by Hono UI.
-The free parts of the Hono UI project are covered separately by the MIT
+paid "Pro" components and blocks ("Pro Blocks") distributed by Kiwa UI.
+The free parts of the Kiwa UI project are covered separately by the MIT
 License in `LICENSE`.
 
-By purchasing a Hono UI Pro license, you accept these terms. If you do
+By purchasing a Kiwa UI Pro license, you accept these terms. If you do
 not accept these terms, do not purchase the license, and do not use the
 Pro Blocks.
 
@@ -16,12 +16,12 @@ Pro Blocks.
 ## 1. Parties
 
 - **"Licensor"** means Tossell Web Solutions Limited, a company registered
-  in England and Wales, the owner of Hono UI.
+  in England and Wales, the owner of Kiwa UI.
 - **"Licensee"** means the individual developer named as the buyer in the
   purchase receipt issued by Lemon Squeezy on behalf of the Licensor.
 - **"Pro Blocks"** means all source files distributed by the Licensor under
   `registry/blocks/pro/` and any future files released as part of the Pro
-  tier within the Hono UI registry. Pro Blocks do **not** include any
+  tier within the Kiwa UI registry. Pro Blocks do **not** include any
   separate product the Licensor may release in the future, such as starter
   kits, project templates, design files, or other standalone product
   offerings.
@@ -42,7 +42,7 @@ worldwide, non-exclusive, non-transferable, non-sublicensable license to:
 
 ## 3. Per-developer scope
 
-One Hono UI Pro license covers **one individual developer**. Each developer
+One Kiwa UI Pro license covers **one individual developer**. Each developer
 who actively uses Pro Blocks in their work must hold their own license.
 
 - Solo founders, freelancers, and indie developers need one license.
@@ -83,7 +83,7 @@ The Licensee may not:
 ## 6. Refunds
 
 The Licensee may request a full refund within **14 days** of the original
-purchase date, no questions asked, by emailing hello@honoui.com from the
+purchase date, no questions asked, by emailing hello@kiwaui.com from the
 email address used at purchase.
 
 ## 7. License termination on refund
@@ -92,7 +92,7 @@ If a refund is issued for any reason, this license automatically and
 immediately terminates. Upon termination:
 
 1. The Licensee's license key is revoked and will no longer authenticate
-   against the Hono UI registry API.
+   against the Kiwa UI registry API.
 2. The Licensee must cease all use of the Pro Blocks, including any Pro
    Blocks already copied into the Licensee's projects.
 3. The Licensee must, within seven (7) days of the refund, remove all
@@ -120,7 +120,7 @@ versions (such as v2, v3, and beyond). The Licensee will never pay an
 additional fee to receive new content or future major versions covered by
 this Agreement.
 
-The Licensor reserves the right to change the price of Hono UI Pro for
+The Licensor reserves the right to change the price of Kiwa UI Pro for
 new license purchases at any time. Any such price change applies only to
 licenses purchased after the change takes effect; the Licensee's existing
 license and lifetime access are unaffected.
@@ -165,8 +165,8 @@ the exclusive jurisdiction of the courts of England and Wales.
 ## 14. Contact
 
 For licensing questions, refund requests, or any other matter relating to
-this Agreement, contact the Licensor at hello@honoui.com.
+this Agreement, contact the Licensor at hello@kiwaui.com.
 
 ---
 
-Tossell Web Solutions Limited · honoui.com
+Tossell Web Solutions Limited · kiwaui.com

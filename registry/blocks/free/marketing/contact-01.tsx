@@ -77,7 +77,7 @@ export const Contact01: FC<Contact01Props> = ({
       <div class="mx-auto mt-12 grid max-w-lg grid-cols-2 gap-x-8 gap-y-8">
         <div class="flex flex-col gap-2">
           <Label>Email</Label>
-          <span class="text-sm text-foreground-muted">hello@honoui.com</span>
+          <span class="text-sm text-foreground-muted">hello@kiwaui.com</span>
         </div>
         <div class="flex flex-col gap-2">
           <Label>Phone</Label>

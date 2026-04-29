@@ -9,7 +9,7 @@
  * Usage:
  * ```html
  * <script type="module">
- *   import { chartTooltip } from '@hono-ui/enhance'
+ *   import { chartTooltip } from '@kiwa-ui/enhance'
  *   chartTooltip()
  * </script>
  * ```

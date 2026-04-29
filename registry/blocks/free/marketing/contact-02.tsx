@@ -32,8 +32,8 @@ const defaultItems: ContactItem[] = [
     icon: 'email',
     title: 'Email',
     description: 'Our team is here to help.',
-    value: 'hello@honoui.com',
-    href: 'mailto:hello@honoui.com',
+    value: 'hello@kiwaui.com',
+    href: 'mailto:hello@kiwaui.com',
   },
   {
     icon: 'phone',

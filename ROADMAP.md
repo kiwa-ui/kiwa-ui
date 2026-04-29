@@ -1,4 +1,4 @@
-# Hono UI - Roadmap
+# Kiwa UI - Roadmap
 
 Future enhancements and features planned for the project.
 
@@ -42,7 +42,7 @@ creation/removal and to their own data filtering logic.
 `activity-tracker.tsx` and `ai-score-cards.tsx` live in
 `registry/_v2-preview/ai/`, outside the registry build paths. They are
 not scanned by the wrapper generator or the registry builder, so they
-do not appear in the docs browser, the registry API, or `npx @hono-ui/cli add`.
+do not appear in the docs browser, the registry API, or `npx @kiwa-ui/cli add`.
 The source is preserved for a future AI dashboard page that composes
 them.
 
@@ -140,9 +140,9 @@ users deterministic control for mount/unmount lifecycles.
 
 ## CLI
 
-### `npx @hono-ui/cli update` command
+### `npx @kiwa-ui/cli update` command
 Check installed components against the registry and offer interactive
-updates (currently `npx @hono-ui/cli diff` shows drift but doesn't apply fixes).
+updates (currently `npx @kiwa-ui/cli diff` shows drift but doesn't apply fixes).
 
 ---
 

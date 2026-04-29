@@ -1,13 +1,13 @@
-# Hono UI - Agent Instructions
+# Kiwa UI - Agent Instructions
 
 ## Product Overview
 
-Hono UI is a **shadcn-style component library and CLI** specifically built for **Hono-first stacks**. It provides SSR-first UI primitives, paid blocks, and starter kits for developers building applications with Hono (deployed to Bun, Deno, Cloudflare Workers, or Node).
+Kiwa UI is a **shadcn-style component library and CLI** specifically built for **Hono-first stacks**. It provides SSR-first UI primitives, paid blocks, and starter kits for developers building applications with Hono (deployed to Bun, Deno, Cloudflare Workers, or Node).
 
 **Core value proposition:**
 - Free, copy/paste primitives that work with Hono's JSX renderer (no React)
 - Paid UI blocks and starter kits for rapid application development
-- Zero client JavaScript by default, optional progressive enhancement via `@hono-ui/enhance`
+- Zero client JavaScript by default, optional progressive enhancement via `@kiwa-ui/enhance`
 - Edge-friendly, SSR-first architecture
 
 **Target users:**
@@ -46,13 +46,13 @@ pnpm lint
 pnpm dev
 
 # Build CLI locally
-pnpm --filter @hono-ui/cli build
+pnpm --filter @kiwa-ui/cli build
 
 # Build enhance package
-pnpm --filter @hono-ui/enhance build
+pnpm --filter @kiwa-ui/enhance build
 
 # Deploy registry API to Cloudflare
-pnpm --filter @hono-ui/registry deploy
+pnpm --filter @kiwa-ui/registry deploy
 ```
 
 ---
@@ -60,22 +60,22 @@ pnpm --filter @hono-ui/registry deploy
 ## Project Layout
 
 ```
-hono-ui/
+kiwa-ui/
 ├── packages/
-│   ├── cli/                      # `hono-ui` CLI tool
+│   ├── cli/                      # `kiwa-ui` CLI tool
 │   │   ├── src/
 │   │   │   ├── commands/
-│   │   │   │   ├── init.ts       # `npx @hono-ui/cli init` - project setup
-│   │   │   │   ├── add.ts        # `npx @hono-ui/cli add` - add components/blocks
-│   │   │   │   └── diff.ts       # `npx @hono-ui/cli diff` - check for updates
+│   │   │   │   ├── init.ts       # `npx @kiwa-ui/cli init` - project setup
+│   │   │   │   ├── add.ts        # `npx @kiwa-ui/cli add` - add components/blocks
+│   │   │   │   └── diff.ts       # `npx @kiwa-ui/cli diff` - check for updates
 │   │   │   ├── utils/
 │   │   │   │   ├── registry.ts   # Fetch from registry API
-│   │   │   │   ├── config.ts     # Read/write hono-ui.json
+│   │   │   │   ├── config.ts     # Read/write kiwa-ui.json
 │   │   │   │   └── files.ts      # File system operations
 │   │   │   └── index.ts          # CLI entry point
 │   │   └── package.json
 │   │
-│   ├── enhance/                  # `@hono-ui/enhance` - optional JS
+│   ├── enhance/                  # `@kiwa-ui/enhance` - optional JS
 │   │   ├── src/
 │   │   │   ├── dialog.ts         # Dialog open/close
 │   │   │   ├── dropdown.ts       # Dropdown toggle
@@ -215,18 +215,18 @@ hono-ui/
 │           ├── lib/
 │           └── README.md
 │
-├── docs/                         # Documentation site (dogfooding hono-ui)
+├── docs/                         # Documentation site (dogfooding kiwa-ui)
 │   ├── app/
 │   ├── content/
 │   └── package.json
 │
-├── templates/                    # Files copied during `npx @hono-ui/cli init`
+├── templates/                    # Files copied during `npx @kiwa-ui/cli init`
 │   ├── lib/
 │   │   └── utils.ts              # cn() helper function
 │   ├── styles/
 │   │   ├── globals.css           # Tailwind base + CSS variables
 │   │   └── tokens.css            # Theme token definitions
-│   └── hono-ui.json.template     # Config file template
+│   └── kiwa-ui.json.template     # Config file template
 │
 ├── ARCHITECTURE.md               # Detailed architecture decisions
 ├── AGENTS.md                     # This file - agent instructions
@@ -241,16 +241,16 @@ hono-ui/
 
 ### Hono JSX vs React JSX
 
-Hono UI components use **Hono's JSX renderer**, NOT React. Key differences:
+Kiwa UI components use **Hono's JSX renderer**, NOT React. Key differences:
 
-| React (shadcn) | Hono UI |
+| React (shadcn) | Kiwa UI |
 |----------------|---------|
 | `import { useState } from 'react'` | **NOT ALLOWED** - no hooks |
 | `import * as React from 'react'` | `import type { FC, JSX } from 'hono/jsx'` |
 | `className={...}` | `class={...}` |
 | `React.forwardRef()` | **NOT NEEDED** - remove entirely |
 | `'use client'` directive | **NOT NEEDED** - remove entirely |
-| `onClick={() => setState(...)}` | SSR-first, use `@hono-ui/enhance` for interactivity |
+| `onClick={() => setState(...)}` | SSR-first, use `@kiwa-ui/enhance` for interactivity |
 
 ### Component Template
 
@@ -316,7 +316,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-### Adding Interactivity with @hono-ui/enhance
+### Adding Interactivity with @kiwa-ui/enhance
 
 For components needing client-side behavior, use data attributes and the enhance package:
 
@@ -331,7 +331,7 @@ For components needing client-side behavior, use data attributes and the enhance
 
 // Client-side enhancement (optional)
 <script type="module">
-  import { dialog } from '@hono-ui/enhance'
+  import { dialog } from '@kiwa-ui/enhance'
   dialog()  // Finds all [data-dialog] elements and adds behavior
 </script>
 ```
@@ -342,7 +342,7 @@ For components needing client-side behavior, use data attributes and the enhance
 
 ### Tailwind v4 (CSS-First)
 
-Hono UI uses **Tailwind v4** with CSS-first configuration. No `tailwind.config.js` needed.
+Kiwa UI uses **Tailwind v4** with CSS-first configuration. No `tailwind.config.js` needed.
 
 ```css
 /* styles/globals.css */
@@ -429,7 +429,7 @@ Use the new ring pattern for focus states:
 
 ### Endpoint Structure
 
-- Base URL: `https://registry.honoui.com`
+- Base URL: `https://registry.kiwaui.com`
 - Component endpoint: `GET /r/:name.json`
 - Index endpoint: `GET /r/index.json`
 
@@ -469,17 +469,17 @@ Use the new ring pattern for focus states:
 
 ## CLI Behavior
 
-### `npx @hono-ui/cli init`
+### `npx @kiwa-ui/cli init`
 
 1. Detect package manager (pnpm/npm/yarn/bun)
-2. Check for existing hono-ui.json (abort if exists, unless --force)
+2. Check for existing kiwa-ui.json (abort if exists, unless --force)
 3. Install dependencies: `clsx`, `tailwind-merge`, `lucide`
 4. Create folder structure: `components/ui/`, `components/blocks/`, `lib/`, `styles/`
 5. Copy template files: `lib/utils.ts`, `styles/globals.css`
-6. Create `hono-ui.json` config file
+6. Create `kiwa-ui.json` config file
 7. Update/create `tailwind.config.js` with theme extensions
 
-### `npx @hono-ui/cli add <components...>`
+### `npx @kiwa-ui/cli add <components...>`
 
 1. Parse component names from arguments
 2. For each component:
@@ -490,11 +490,11 @@ Use the new ring pattern for focus states:
    - Install npm dependencies if needed
 3. Report success/failure for each component
 
-### `npx @hono-ui/cli add block <blocks...>`
+### `npx @kiwa-ui/cli add block <blocks...>`
 
 Same as above, but fetches from blocks category and writes to `components/blocks/`.
 
-### `npx @hono-ui/cli add starter <name> --dir <path>`
+### `npx @kiwa-ui/cli add starter <name> --dir <path>`
 
 1. Validate license key for starter access
 2. Create target directory
@@ -503,9 +503,9 @@ Same as above, but fetches from blocks category and writes to `components/blocks
 5. Install dependencies
 6. Print getting started instructions
 
-### `npx @hono-ui/cli diff`
+### `npx @kiwa-ui/cli diff`
 
-1. Read installed components from hono-ui.json
+1. Read installed components from kiwa-ui.json
 2. For each component, fetch latest from registry
 3. Compare file contents (hash or full diff)
 4. Report which components have updates available
@@ -515,7 +515,7 @@ Same as above, but fetches from blocks category and writes to `components/blocks
 
 ## Porting shadcn Components
 
-When porting a component from shadcn to Hono UI:
+When porting a component from shadcn to Kiwa UI:
 
 ### Phase 1: Simple Components (No Radix)
 
@@ -536,7 +536,7 @@ These can be ported almost directly:
 
 ### Phase 2: Interactive Components (Radix-dependent)
 
-These need to be rebuilt with SSR-first approach + `@hono-ui/enhance`:
+These need to be rebuilt with SSR-first approach + `@kiwa-ui/enhance`:
 
 1. Create SSR-safe HTML structure with data attributes
 2. Style with Tailwind (closed state by default)
@@ -577,7 +577,7 @@ These need to be rebuilt with SSR-first approach + `@hono-ui/enhance`:
 
 - Minimize runtime dependencies
 - Required: `clsx`, `tailwind-merge` (for cn utility), `lucide` (icon nodes)
-- Optional: `@hono-ui/enhance` (for interactivity)
+- Optional: `@kiwa-ui/enhance` (for interactivity)
 - No React, no Radix, no heavy UI libraries
 
 ### Icons
@@ -602,8 +602,8 @@ These need to be rebuilt with SSR-first approach + `@hono-ui/enhance`:
 
 ## Shipping & the Public Mirror
 
-The canonical Hono UI repo is private. The repository at
-`github.com/hono-ui/hono-ui` that you may be reading right now is a
+The canonical Kiwa UI repo is private. The repository at
+`github.com/kiwa-ui/kiwa-ui` that you may be reading right now is a
 read-only **mirror** populated only by `scripts/sync-public.sh`,
 which runs from the private upstream. Whenever a change ships
 upstream that touches a public-included path, the mirror needs to be
@@ -677,7 +677,7 @@ design files) just lives in the upstream repo and stays private.
 
 1. **`className` vs `class`**: Hono JSX uses `class`, not `className`. Always check ported components.
 
-2. **No hooks**: Any `useState`, `useEffect`, `useRef` must be removed. If state is needed, use `@hono-ui/enhance`.
+2. **No hooks**: Any `useState`, `useEffect`, `useRef` must be removed. If state is needed, use `@kiwa-ui/enhance`.
 
 3. **No forwardRef**: Hono JSX doesn't need ref forwarding. Remove the wrapper entirely.
 
@@ -704,7 +704,7 @@ design files) just lives in the upstream repo and stays private.
 
 - [ ] Exact list of 25 primitives for v1
 - [ ] Which 20 blocks to include free
-- [x] Domain name: `honoui.com`
+- [x] Domain name: `kiwaui.com`
 - [ ] Whether to use `cva` (class-variance-authority) for variants
 
 ---
@@ -716,8 +716,8 @@ design files) just lives in the upstream repo and stays private.
 | Add new primitive | Create in `registry/ui/`, add to registry index |
 | Add new block | Create in `registry/blocks/free/` or `registry/blocks/pro/` |
 | Browse docs/components | Open docs app at `/?group=components` (use `group=marketing` or `group=application` for blocks) |
-| Build CLI | `pnpm --filter @hono-ui/cli build` |
-| Deploy registry | `pnpm --filter @hono-ui/registry deploy` |
+| Build CLI | `pnpm --filter @kiwa-ui/cli build` |
+| Deploy registry | `pnpm --filter @kiwa-ui/registry deploy` |
 | Check types | `pnpm typecheck` |
 | Run all tests | `pnpm test` |
 

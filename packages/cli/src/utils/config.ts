@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 
-export interface HonoUIConfig {
+export interface KiwaUIConfig {
   $schema?: string
   tsconfig?: string
   tailwind: {
@@ -16,30 +16,32 @@ export interface HonoUIConfig {
   components: string[]
 }
 
-const CONFIG_FILE = 'hono-ui.json'
+const CONFIG_FILE = 'kiwa-ui.json'
+const LEGACY_CONFIG_FILE = 'hono-ui.json'
 
-export async function readConfig(cwd: string = process.cwd()): Promise<HonoUIConfig | null> {
+export async function readConfig(cwd: string = process.cwd()): Promise<KiwaUIConfig | null> {
   const configPath = join(cwd, CONFIG_FILE)
-
-  if (!existsSync(configPath)) {
-    return null
+  if (existsSync(configPath)) {
+    return JSON.parse(await readFile(configPath, 'utf-8'))
   }
-
-  const content = await readFile(configPath, 'utf-8')
-  return JSON.parse(content)
+  const legacyPath = join(cwd, LEGACY_CONFIG_FILE)
+  if (existsSync(legacyPath)) {
+    return JSON.parse(await readFile(legacyPath, 'utf-8'))
+  }
+  return null
 }
 
 export async function writeConfig(
-  config: HonoUIConfig,
+  config: KiwaUIConfig,
   cwd: string = process.cwd()
 ): Promise<void> {
   const configPath = join(cwd, CONFIG_FILE)
   await writeFile(configPath, JSON.stringify(config, null, 2))
 }
 
-export function getDefaultConfig(): HonoUIConfig {
+export function getDefaultConfig(): KiwaUIConfig {
   return {
-    $schema: 'https://registry.honoui.com/schema.json',
+    $schema: 'https://registry.kiwaui.com/schema.json',
     tsconfig: 'tsconfig.json',
     tailwind: {
       config: 'tailwind.config.js',

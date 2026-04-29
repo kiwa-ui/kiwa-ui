@@ -1,12 +1,12 @@
-# Hono UI registry — example wrangler config.
+# Kiwa UI registry — example wrangler config.
 #
 # Copy this to `wrangler.toml` and fill in your own Cloudflare and Lemon
 # Squeezy identifiers if you want to self-host a clone of this registry.
-# The official Hono UI registry is hosted by Tossell Web Solutions Limited
-# at https://registry.honoui.com — most contributors do not need to deploy
+# The official Kiwa UI registry is hosted by Tossell Web Solutions Limited
+# at https://registry.kiwaui.com — most contributors do not need to deploy
 # their own.
 
-name = "hono-ui-registry"
+name = "kiwa-ui-registry"
 main = "src/index.ts"
 compatibility_date = "2024-01-01"
 account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
@@ -21,7 +21,7 @@ LEMON_SQUEEZY_PRO_VARIANT_ID = "YOUR_LEMON_SQUEEZY_VARIANT_ID"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "hono-ui-licenses"
+database_name = "kiwa-ui-licenses"
 database_id = "YOUR_D1_DATABASE_ID"
 
 [[kv_namespaces]]

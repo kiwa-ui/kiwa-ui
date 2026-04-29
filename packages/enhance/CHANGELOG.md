@@ -27,5 +27,5 @@ First stable release.
   date-picker, selectable-table, select, chart-tooltip.
 - All helpers are zero-dependency except the `editor` subpath, which
   declares `@tiptap/*` as optional peer dependencies.
-- Import per-primitive from the subpath (e.g. `@hono-ui/enhance/dialog`)
+- Import per-primitive from the subpath (e.g. `@kiwa-ui/enhance/dialog`)
   to keep the client bundle small.

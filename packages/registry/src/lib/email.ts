@@ -13,10 +13,10 @@ export async function sendWelcomeEmail(params: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Hono UI <hello@honoui.com>',
-      reply_to: 'hello@honoui.com',
+      from: 'Kiwa UI <hello@kiwaui.com>',
+      reply_to: 'hello@kiwaui.com',
       to: [params.to],
-      subject: 'Your Hono UI license key',
+      subject: 'Your Kiwa UI license key',
       html: renderWelcomeEmail({ licenseKey: params.licenseKey, orderId: params.orderId }),
       text: renderWelcomeEmailText({ licenseKey: params.licenseKey, orderId: params.orderId }),
     }),

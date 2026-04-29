@@ -13,7 +13,7 @@ export const people = [
   {
     id: 'usr-001',
     name: 'Sophie Reeves',
-    email: 'sophie.r@honoui.com',
+    email: 'sophie.r@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/sophie-reeves.jpg` : '',
     role: 'Engineering Lead',
     company: 'TechFlow',
@@ -22,7 +22,7 @@ export const people = [
   {
     id: 'usr-002',
     name: 'Marcus Foley',
-    email: 'marcus.f@honoui.com',
+    email: 'marcus.f@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/marcus-foley.jpg` : '',
     role: 'Product Manager',
     company: 'Innovate Labs',
@@ -31,7 +31,7 @@ export const people = [
   {
     id: 'usr-003',
     name: 'Rosa Kim',
-    email: 'rosa.k@honoui.com',
+    email: 'rosa.k@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/rosa-kim.jpg` : '',
     role: 'Head of Design',
     company: 'ScaleUp Inc',
@@ -40,7 +40,7 @@ export const people = [
   {
     id: 'usr-004',
     name: 'Theo Donovan',
-    email: 'theo.d@honoui.com',
+    email: 'theo.d@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/theo-donovan.jpg` : '',
     role: 'Full Stack Developer',
     company: 'CloudBase',
@@ -49,7 +49,7 @@ export const people = [
   {
     id: 'usr-005',
     name: 'Zara Whitfield',
-    email: 'zara.w@honoui.com',
+    email: 'zara.w@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/zara-whitfield.jpg` : '',
     role: 'UX Designer',
     company: 'PixelPerfect',
@@ -58,7 +58,7 @@ export const people = [
   {
     id: 'usr-006',
     name: 'Hugo Reyes',
-    email: 'hugo.r@honoui.com',
+    email: 'hugo.r@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/hugo-reyes.jpg` : '',
     role: 'DevOps Engineer',
     company: 'BuildFast',
@@ -67,7 +67,7 @@ export const people = [
   {
     id: 'usr-007',
     name: 'Jonah Alcott',
-    email: 'jonah.a@honoui.com',
+    email: 'jonah.a@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/jonah-alcott.jpg` : '',
     role: 'Marketing Director',
     company: 'LaunchPad',
@@ -76,7 +76,7 @@ export const people = [
   {
     id: 'usr-008',
     name: 'Camila Orellana',
-    email: 'camila.o@honoui.com',
+    email: 'camila.o@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/camila-orellana.jpg` : '',
     role: 'Data Scientist',
     company: 'RapidDev',
@@ -85,7 +85,7 @@ export const people = [
   {
     id: 'usr-009',
     name: 'Nina Vergara',
-    email: 'nina.v@honoui.com',
+    email: 'nina.v@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/nina-vergara.jpg` : '',
     role: 'Frontend Engineer',
     company: 'Craftwork',
@@ -94,7 +94,7 @@ export const people = [
   {
     id: 'usr-010',
     name: 'Nico Cardona',
-    email: 'nico.c@honoui.com',
+    email: 'nico.c@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/nico-cardona.jpg` : '',
     role: 'Backend Engineer',
     company: 'Streamline',
@@ -103,7 +103,7 @@ export const people = [
   {
     id: 'usr-011',
     name: 'Nia Okonjo',
-    email: 'nia.o@honoui.com',
+    email: 'nia.o@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/nia-okonjo.jpg` : '',
     role: 'QA Lead',
     company: 'ScaleOps',
@@ -112,7 +112,7 @@ export const people = [
   {
     id: 'usr-012',
     name: 'Hana Tavares',
-    email: 'hana.t@honoui.com',
+    email: 'hana.t@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/hana-tavares.jpg` : '',
     role: 'Solutions Architect',
     company: 'TechForward',
@@ -121,7 +121,7 @@ export const people = [
   {
     id: 'usr-013',
     name: 'Ryan Osei',
-    email: 'ryan.o@honoui.com',
+    email: 'ryan.o@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/ryan-osei.jpg` : '',
     role: 'Content Strategist',
     company: 'Momentum',
@@ -130,7 +130,7 @@ export const people = [
   {
     id: 'usr-014',
     name: 'Lena Mercer',
-    email: 'lena.m@honoui.com',
+    email: 'lena.m@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/lena-mercer.jpg` : '',
     role: 'Security Engineer',
     company: 'IndieHacker',
@@ -139,7 +139,7 @@ export const people = [
   {
     id: 'usr-015',
     name: 'Kai Morita',
-    email: 'kai.m@honoui.com',
+    email: 'kai.m@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/kai-morita.jpg` : '',
     role: 'Customer Success',
     company: 'DesignCo',
@@ -148,7 +148,7 @@ export const people = [
   {
     id: 'usr-016',
     name: 'Reid Lawson',
-    email: 'reid.l@honoui.com',
+    email: 'reid.l@kiwaui.com',
     avatar: avatarBase ? `${avatarBase}/reid-lawson.jpg` : '',
     role: 'CTO',
     company: 'RapidBuild',
@@ -1197,8 +1197,8 @@ export const settingsTeamMembers = [
 export type SettingsTeamMember = (typeof settingsTeamMembers)[number]
 
 export const pendingInvitations = [
-  { email: 'zara.w@honoui.com', role: 'Member' as const, sent: 'Jun 15, 2025' },
-  { email: 'lena.m@honoui.com', role: 'Viewer' as const, sent: 'Jun 18, 2025' },
+  { email: 'zara.w@kiwaui.com', role: 'Member' as const, sent: 'Jun 15, 2025' },
+  { email: 'lena.m@kiwaui.com', role: 'Viewer' as const, sent: 'Jun 18, 2025' },
 ] as const
 
 export type PendingInvitation = (typeof pendingInvitations)[number]

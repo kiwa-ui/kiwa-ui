@@ -1,10 +1,10 @@
 {
-  "name": "@hono-ui/cli",
-  "version": "1.1.2",
-  "description": "CLI for adding Hono UI components to your project",
+  "name": "@kiwa-ui/cli",
+  "version": "2.0.0",
+  "description": "CLI for adding Kiwa UI components to your project",
   "type": "module",
   "bin": {
-    "hono-ui": "./dist/index.js"
+    "kiwa-ui": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "scripts": {

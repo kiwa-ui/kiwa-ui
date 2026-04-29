@@ -7,7 +7,7 @@
  * ```
  * 
  * ```ts
- * import { toast } from '@hono-ui/enhance'
+ * import { toast } from '@kiwa-ui/enhance'
  * 
  * toast.init()
  * toast.show({ message: 'Hello!', type: 'success' })

@@ -18,7 +18,7 @@ type Testimonials01Props = {
 
 
 export const Testimonials01: FC<Testimonials01Props> = ({
-  quote = 'Hono UI has completely transformed how we build landing pages. The components are beautiful, accessible, and just work.',
+  quote = 'Kiwa UI has completely transformed how we build landing pages. The components are beautiful, accessible, and just work.',
   author = {
     name: 'Sophie Reeves',
     title: 'VP of Engineering',

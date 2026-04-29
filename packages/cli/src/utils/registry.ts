@@ -1,4 +1,7 @@
-const REGISTRY_URL = process.env.HONO_UI_REGISTRY_URL || 'https://registry.honoui.com'
+const REGISTRY_URL =
+  process.env.KIWA_UI_REGISTRY_URL ||
+  process.env.HONO_UI_REGISTRY_URL ||
+  'https://registry.kiwaui.com'
 
 export interface RegistryComponent {
   name: string

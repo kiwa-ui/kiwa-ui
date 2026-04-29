@@ -1,16 +1,16 @@
-# Hono UI
+# Kiwa UI
 
 > SSR-first components and blocks for Hono. Edge-ready, zero client JS by default.
 
-[![@hono-ui/cli](https://img.shields.io/npm/v/@hono-ui/cli?label=cli)](https://www.npmjs.com/package/@hono-ui/cli)
-[![@hono-ui/enhance](https://img.shields.io/npm/v/@hono-ui/enhance?label=enhance)](https://www.npmjs.com/package/@hono-ui/enhance)
+[![@kiwa-ui/cli](https://img.shields.io/npm/v/@kiwa-ui/cli?label=cli)](https://www.npmjs.com/package/@kiwa-ui/cli)
+[![@kiwa-ui/enhance](https://img.shields.io/npm/v/@kiwa-ui/enhance?label=enhance)](https://www.npmjs.com/package/@kiwa-ui/enhance)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Hono UI is a component library and CLI built specifically for [Hono](https://hono.dev/)'s JSX renderer. Every component renders on the server with zero client JavaScript by default. Optional progressive enhancement via `@hono-ui/enhance`. Runs on **Bun, Deno, Cloudflare Workers, and Node.js** — the same code, every runtime.
+Kiwa UI is a component library and CLI built specifically for [Hono](https://hono.dev/)'s JSX renderer. Every component renders on the server with zero client JavaScript by default. Optional progressive enhancement via `@kiwa-ui/enhance`. Runs on **Bun, Deno, Cloudflare Workers, and Node.js** — the same code, every runtime.
 
-> **Independent project.** Hono UI is not affiliated with, sponsored by, or endorsed by the Hono team or hono.dev. Hono is a trademark of its respective owner.
+> **Independent project.** Kiwa UI is not affiliated with, sponsored by, or endorsed by the Hono team or hono.dev. Hono is a trademark of its respective owner.
 
-→ **[honoui.com](https://honoui.com)** · [docs](https://honoui.com/docs) · [pricing](https://honoui.com/pricing) · [@AdamTossell](https://x.com/AdamTossell)
+→ **[kiwaui.com](https://kiwaui.com)** · [docs](https://kiwaui.com/docs) · [pricing](https://kiwaui.com/pricing) · [@AdamTossell](https://x.com/AdamTossell)
 
 ---
 
@@ -19,8 +19,8 @@ Hono UI is a component library and CLI built specifically for [Hono](https://hon
 Inside an existing Hono project:
 
 ```bash
-npx @hono-ui/cli init
-npx @hono-ui/cli add button card dialog
+npx @kiwa-ui/cli init
+npx @kiwa-ui/cli add button card dialog
 ```
 
 That copies the components straight into your repo. You own the source — edit them however you want.
@@ -28,8 +28,8 @@ That copies the components straight into your repo. You own the source — edit 
 For Pro blocks (after purchase):
 
 ```bash
-export HONO_UI_TOKEN=<your-license-key>
-npx @hono-ui/cli add hero-04 bento-03 chart-area
+export KIWA_UI_TOKEN=<your-license-key>
+npx @kiwa-ui/cli add hero-04 bento-03 chart-area
 ```
 
 A component looks like this:
@@ -64,8 +64,8 @@ No `forwardRef`, no `useState`, no `'use client'`. Just SSR JSX that runs anywhe
 
 - **50 UI primitives** — button, card, dialog, dropdown, accordion, popover, tooltip, tabs, table, slider, editor, and more
 - **30 marketing blocks** — heroes, features, pricing, FAQ, CTAs, footers
-- **`@hono-ui/cli`** — install components straight from the registry
-- **`@hono-ui/enhance`** — optional progressive-enhancement helpers for every interactive primitive
+- **`@kiwa-ui/cli`** — install components straight from the registry
+- **`@kiwa-ui/enhance`** — optional progressive-enhancement helpers for every interactive primitive
 
 ### Pro — $99 one-time
 
@@ -78,11 +78,11 @@ No `forwardRef`, no `useState`, no `'use client'`. Just SSR JSX that runs anywhe
 - One license per developer, unlimited personal and commercial projects
 - 14-day no-questions-asked refund
 
-→ **[See pricing](https://honoui.com/pricing)**
+→ **[See pricing](https://kiwaui.com/pricing)**
 
 ---
 
-## Why Hono UI
+## Why Kiwa UI
 
 - **SSR-first** — every component renders on the server, no hydration cost
 - **Zero client JS by default** — plain HTML and CSS until you opt in
@@ -90,7 +90,7 @@ No `forwardRef`, no `useState`, no `'use client'`. Just SSR JSX that runs anywhe
 - **Own the source** — components are copied into your project, no black-box dependency
 - **Strict TypeScript** — every prop typed, every block exported as a typed `FC`
 
-Hono UI is **not** a React library. It uses Hono's JSX renderer (`hono/jsx`). No hooks, no `forwardRef`, no `'use client'` directives.
+Kiwa UI is **not** a React library. It uses Hono's JSX renderer (`hono/jsx`). No hooks, no `forwardRef`, no `'use client'` directives.
 
 ---
 
@@ -109,11 +109,11 @@ Requires Hono 4+ and Tailwind CSS v4.
 
 ## Documentation
 
-- [Get started](https://honoui.com/docs?guide=installation)
-- [Components](https://honoui.com/docs?group=components)
-- [Free blocks](https://honoui.com/docs?group=marketing)
-- [Pro blocks](https://honoui.com/docs) — preview without a license
-- [Pricing & FAQ](https://honoui.com/pricing)
+- [Get started](https://kiwaui.com/docs?guide=installation)
+- [Components](https://kiwaui.com/docs?group=components)
+- [Free blocks](https://kiwaui.com/docs?group=marketing)
+- [Pro blocks](https://kiwaui.com/docs) — preview without a license
+- [Pricing & FAQ](https://kiwaui.com/pricing)
 
 ---
 
@@ -121,7 +121,7 @@ Requires Hono 4+ and Tailwind CSS v4.
 
 This GitHub repo is a read-only mirror of our private working repo. The full development happens upstream; the open-source surface is synced here on each release.
 
-- **Found a bug?** File it at [github.com/hono-ui/hono-ui/issues](https://github.com/hono-ui/hono-ui/issues) — that's the right place for bug reports, feature requests, and questions.
+- **Found a bug?** File it at [github.com/kiwa-ui/kiwa-ui/issues](https://github.com/kiwa-ui/kiwa-ui/issues) — that's the right place for bug reports, feature requests, and questions.
 - **Pull requests** are not currently accepted. If you've got a fix or improvement, open an issue describing what you'd change and we'll address it from upstream.
 
 ---
@@ -129,7 +129,7 @@ This GitHub repo is a read-only mirror of our private working repo. The full dev
 ## License
 
 - Free parts (CLI, enhance, primitives, free blocks): [MIT](LICENSE)
-- Pro blocks: [commercial license](LICENSE-PRO.md) — [purchase here](https://honoui.com/pricing)
+- Pro blocks: [commercial license](LICENSE-PRO.md) — [purchase here](https://kiwaui.com/pricing)
 
 ---
 

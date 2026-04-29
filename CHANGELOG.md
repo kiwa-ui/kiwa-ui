@@ -1,11 +1,54 @@
 # Changelog
 
-User-facing changes to Hono UI primitives, blocks, CLI, and `@hono-ui/enhance`.
+User-facing changes to Kiwa UI primitives, blocks, CLI, and `@kiwa-ui/enhance`.
 The landing page, pricing, and docs site live in git history and are not
 tracked here.
 
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
+
+## 2026-04-29 — Renamed: Hono UI is now Kiwa UI
+
+Hono UI has been renamed to **Kiwa UI** to remove confusion with the
+[Hono](https://hono.dev) framework itself. Kiwa UI remains an independent
+project, built for Hono but not affiliated with hono.dev. *Kiwa* (際) is
+Japanese for "edge" — a nod both to Hono's heritage and to Kiwa UI's
+edge-runtime focus (Bun, Deno, Cloudflare Workers).
+
+### ⚠ Breaking
+
+- ⚠ npm packages renamed:
+  - `@hono-ui/cli` → `@kiwa-ui/cli` (now `2.0.0`)
+  - `@hono-ui/enhance` → `@kiwa-ui/enhance` (now `2.0.0`)
+- ⚠ Domain: `honoui.com` → `kiwaui.com`. The old domain 301-redirects to
+  the new one, so existing customer scripts keep working.
+- ⚠ Registry: `https://registry.honoui.com` → `https://registry.kiwaui.com`.
+  Both URLs continue to serve the same registry during the transition.
+- ⚠ Env vars: `HONO_UI_TOKEN` → `KIWA_UI_TOKEN`,
+  `HONO_UI_REGISTRY_URL` → `KIWA_UI_REGISTRY_URL`. The old names are still
+  read as fallbacks, so existing CI configs keep working — but rename them
+  when you can.
+- ⚠ Config file: `hono-ui.json` → `kiwa-ui.json`. The CLI reads either
+  during the transition; new `init` writes `kiwa-ui.json`.
+- ⚠ GitHub: `github.com/hono-ui/hono-ui` → `github.com/kiwa-ui/kiwa-ui`.
+  GitHub auto-redirects clones, issue links, and stargazers.
+
+### Migration for existing customers
+
+```bash
+# Replace the deprecated package
+npm uninstall @hono-ui/cli @hono-ui/enhance
+npm install @kiwa-ui/cli @kiwa-ui/enhance
+
+# Rename the env var (or leave HONO_UI_TOKEN — still works)
+export KIWA_UI_TOKEN=$HONO_UI_TOKEN
+
+# Rename the config file (optional — old name still works)
+mv hono-ui.json kiwa-ui.json
+```
+
+License keys are unchanged. Your existing key continues to authenticate
+against the new registry.
 
 ## 2026-04-28 (later)
 
@@ -24,7 +67,7 @@ rather than version.
   forgot to wire it into the init command, leaving `globals.css` with a
   dangling `@import` and pro blocks rendering without their swirl
   backgrounds.
-- Registry: welcome email now includes the `npx @hono-ui/cli@latest init`
+- Registry: welcome email now includes the `npx @kiwa-ui/cli@latest init`
   step before the `add` step, and the `add` example uses the correct
   syntax (`add hero-03`, not the non-existent `add block hero-03`).
 
@@ -117,16 +160,16 @@ rather than version.
   - **AI** — chat layouts, chat messages, chat input, onboarding.
   - **Pages** — login, signup, forgot-password, dashboard settings,
     dashboard tasks, dashboard users, analytics page templates.
-- **`@hono-ui/cli` 1.0.1** — `init`, `add`, `add block`, `add starter`,
-  and `diff` commands. Defaults to `https://registry.honoui.com`;
-  override via `HONO_UI_REGISTRY_URL`.
-- **`@hono-ui/enhance` 1.0.0** — progressive enhancement modules for
+- **`@kiwa-ui/cli` 1.0.1** — `init`, `add`, `add block`, `add starter`,
+  and `diff` commands. Defaults to `https://registry.kiwaui.com`;
+  override via `KIWA_UI_REGISTRY_URL`.
+- **`@kiwa-ui/enhance` 1.0.0** — progressive enhancement modules for
   every interactive primitive: accordion, alert-dialog, carousel,
   chart-tooltip, clipboard, collapsible, command, context-menu,
   date-picker, dialog, dropdown, editor, hover-card, popover,
   popover-submenu, select, selectable-table, sheet, sidebar,
   sidebar-mobile, slider, tabs, theme, toast, toggle, tooltip.
-- **Registry API** at `registry.honoui.com` — component and block
+- **Registry API** at `registry.kiwaui.com` — component and block
   fetching, license validation, Lemon Squeezy webhook integration,
   Resend-based welcome emails, full-refund license revocation.
 - **Pro licensing** — $99 one-time via Lemon Squeezy for lifetime

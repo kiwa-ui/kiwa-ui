@@ -1,4 +1,4 @@
-# Hono UI - Architecture
+# Kiwa UI - Architecture
 
 A shadcn-style workflow for Hono-first stacks: SSR-first primitives, paid blocks, and starter kits.
 
@@ -8,7 +8,7 @@ A shadcn-style workflow for Hono-first stacks: SSR-first primitives, paid blocks
 
 **Single API on Cloudflare Workers** serving both free and paid content.
 
-- **Endpoint**: `https://registry.honoui.com`
+- **Endpoint**: `https://registry.kiwaui.com`
 - **Free components**: No authentication required
 - **Paid components**: Require `Authorization: Bearer <license_key>` header
 
@@ -16,10 +16,10 @@ A shadcn-style workflow for Hono-first stacks: SSR-first primitives, paid blocks
 // User's components.json after purchasing
 {
   "registries": {
-    "hono-ui": {
-      "url": "https://registry.honoui.com",
+    "kiwa-ui": {
+      "url": "https://registry.kiwaui.com",
       "headers": {
-        "Authorization": "Bearer $HONO_UI_TOKEN"
+        "Authorization": "Bearer $KIWA_UI_TOKEN"
       }
     }
   }
@@ -65,7 +65,7 @@ This enables:
 
 ### 3. Client Interactivity
 
-**Separate package: `@hono-ui/enhance`**
+**Separate package: `@kiwa-ui/enhance`**
 
 Optional progressive enhancement for interactive behaviors:
 - Dropdown open/close
@@ -76,13 +76,13 @@ Optional progressive enhancement for interactive behaviors:
 
 ```tsx
 // Usage in Hono route
-import { dialog } from '@hono-ui/enhance'
+import { dialog } from '@kiwa-ui/enhance'
 
 <button data-dialog-trigger="my-dialog">Open</button>
 <div data-dialog="my-dialog">Dialog content</div>
 
 <script type="module">
-  import { dialog } from '@hono-ui/enhance'
+  import { dialog } from '@kiwa-ui/enhance'
   dialog()
 </script>
 ```
@@ -94,10 +94,10 @@ Philosophy: **Zero JS by default, opt-in interactivity.**
 **Primary: CLI scaffolding**
 
 ```bash
-npx @hono-ui/cli add starter ai-saas --dir ./my-new-app
+npx @kiwa-ui/cli add starter ai-saas --dir ./my-new-app
 ```
 
-**Fallback: Dashboard download** at `honoui.com/purchases` for users who prefer manual setup.
+**Fallback: Dashboard download** at `kiwaui.com/purchases` for users who prefer manual setup.
 
 ### 5. Component Strategy
 
@@ -107,7 +107,7 @@ npx @hono-ui/cli add starter ai-saas --dir ./my-new-app
 
 **Phase 2**: Rebuild Radix-dependent components as SSR-first
 - Dialog, Dropdown, Select, Tabs, etc.
-- SSR baseline with `@hono-ui/enhance` for interactivity
+- SSR baseline with `@kiwa-ui/enhance` for interactivity
 
 ### 6. Icon System
 
@@ -123,7 +123,7 @@ npx @hono-ui/cli add starter ai-saas --dir ./my-new-app
 
 ---
 
-## User Project Structure (after `npx @hono-ui/cli init`)
+## User Project Structure (after `npx @kiwa-ui/cli init`)
 
 ```
 user-project/
@@ -138,7 +138,7 @@ user-project/
 ├── styles/
 │   ├── globals.css          # Tailwind + CSS variables
 │   └── tokens.css           # Theme tokens (optional)
-└── hono-ui.json             # Config file
+└── kiwa-ui.json             # Config file
 ```
 
 ---
@@ -146,20 +146,20 @@ user-project/
 ## CLI Commands
 
 ```bash
-# Initialize hono-ui in a project
-npx @hono-ui/cli init
+# Initialize kiwa-ui in a project
+npx @kiwa-ui/cli init
 
 # Add primitives
-npx @hono-ui/cli add button input card
+npx @kiwa-ui/cli add button input card
 
 # Add blocks (free or paid based on license)
-npx @hono-ui/cli add block hero-centered pricing-table
+npx @kiwa-ui/cli add block hero-centered pricing-table
 
 # Add starter kit (paid, scaffolds new project)
-npx @hono-ui/cli add starter ai-saas --dir ./my-app
+npx @kiwa-ui/cli add starter ai-saas --dir ./my-app
 
 # Check for updates to installed components
-npx @hono-ui/cli diff
+npx @kiwa-ui/cli diff
 ```
 
 Styling model:
@@ -274,7 +274,7 @@ Payment via Lemon Squeezy → webhook creates license key → stored in DB → v
 | Monorepo | pnpm workspaces |
 | CLI | TypeScript, Commander.js |
 | Registry API | Hono on Cloudflare Workers |
-| Docs site | Hono + hono-ui (dogfooding) |
+| Docs site | Hono + kiwa-ui (dogfooding) |
 | Payments | Lemon Squeezy |
 | License DB | Cloudflare D1 or KV |
 

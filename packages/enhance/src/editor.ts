@@ -18,7 +18,7 @@
  * Usage:
  * ```html
  * <script type="module">
- *   import { editor } from '@hono-ui/enhance'
+ *   import { editor } from '@kiwa-ui/enhance'
  *   editor()
  * </script>
  * ```
@@ -84,7 +84,7 @@ export async function editor(): Promise<EditorInstance[]> {
     }
   } catch {
     console.error(
-      '[@hono-ui/enhance] Tiptap not found. Please install required dependencies:\n' +
+      '[@kiwa-ui/enhance] Tiptap not found. Please install required dependencies:\n' +
       'npm install @tiptap/core @tiptap/pm @tiptap/starter-kit'
     )
     return instances
@@ -99,7 +99,7 @@ export async function editor(): Promise<EditorInstance[]> {
     const initialContent = container.dataset.editorContent || '<p></p>'
 
     if (!contentArea) {
-      console.warn(`[@hono-ui/enhance] No [data-editor-area] found for editor "${id}"`)
+      console.warn(`[@kiwa-ui/enhance] No [data-editor-area] found for editor "${id}"`)
       return
     }
 

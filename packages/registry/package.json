@@ -1,7 +1,7 @@
 {
-  "name": "@hono-ui/registry",
+  "name": "@kiwa-ui/registry",
   "version": "0.0.1",
-  "description": "Registry API for Hono UI components (Cloudflare Worker)",
+  "description": "Registry API for Kiwa UI components (Cloudflare Worker)",
   "type": "module",
   "scripts": {
     "build:registry": "tsx scripts/build-registry.ts",

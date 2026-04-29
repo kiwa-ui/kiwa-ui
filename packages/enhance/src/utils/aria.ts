@@ -7,7 +7,7 @@ let idCounter = 0
 /**
  * Generate a unique ID for ARIA relationships.
  */
-export function generateId(prefix = 'hono-ui'): string {
+export function generateId(prefix = 'kiwa-ui'): string {
   return `${prefix}-${++idCounter}`
 }
 

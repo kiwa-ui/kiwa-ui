@@ -25,7 +25,7 @@ auth.post('/resend-key', async (c) => {
   const genericResponse = {
     ok: true,
     message:
-      'If this email is associated with a Hono UI Pro license, a new email has been sent.',
+      'If this email is associated with a Kiwa UI Pro license, a new email has been sent.',
   }
 
   if (!email || !EMAIL_PATTERN.test(email)) {

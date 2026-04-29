@@ -27,7 +27,7 @@ const defaultLinks: NavLink[] = [
 ]
 
 export const Nav02: FC<Nav02Props> = ({
-  logo = 'Hono UI',
+  logo = 'Kiwa UI',
   logoHref = '/',
   links = defaultLinks,
   loginText,

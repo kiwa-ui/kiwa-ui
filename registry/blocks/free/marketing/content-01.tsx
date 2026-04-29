@@ -14,7 +14,7 @@ type Content01Props = {
 }
 
 const defaultParagraphs = [
-  'We started Hono UI because we believe building beautiful, fast websites should be accessible to every team. The tools we had felt either too rigid or too complicated for the way modern teams ship.',
+  'We started Kiwa UI because we believe building beautiful, fast websites should be accessible to every team. The tools we had felt either too rigid or too complicated for the way modern teams ship.',
   'Today we work with thousands of designers and engineers across startups and enterprises, helping them launch polished products in hours instead of weeks. Everything we build is shaped by their feedback.',
 ]
 

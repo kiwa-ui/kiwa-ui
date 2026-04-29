@@ -28,7 +28,7 @@ async function createFakePnpmBin(rootDir) {
 }
 
 async function runInitFixture() {
-  const rootDir = await mkdtemp(join(tmpdir(), 'hono-ui-init-'))
+  const rootDir = await mkdtemp(join(tmpdir(), 'kiwa-ui-init-'))
   const workspaceDir = join(rootDir, 'workspace')
   await mkdir(workspaceDir, { recursive: true })
   await writeFile(join(workspaceDir, 'package.json'), '{"name":"fixture","private":true}\n')
@@ -47,7 +47,7 @@ async function runInitFixture() {
 
   const [globalsCss, rawConfig, rawTsconfig] = await Promise.all([
     readFile(join(workspaceDir, 'styles/globals.css'), 'utf8'),
-    readFile(join(workspaceDir, 'hono-ui.json'), 'utf8'),
+    readFile(join(workspaceDir, 'kiwa-ui.json'), 'utf8'),
     readFile(join(workspaceDir, 'tsconfig.json'), 'utf8'),
   ])
 

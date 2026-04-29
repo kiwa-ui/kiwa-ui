@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.0.0 — 2026-04-29
+
+Renamed: this package is now `@kiwa-ui/cli` (was `@hono-ui/cli`). See the
+top-level `CHANGELOG.md` for the full rebrand notes and migration steps.
+
+### ⚠ Breaking
+
+- Package renamed `@hono-ui/cli` → `@kiwa-ui/cli`. Bin renamed
+  `hono-ui` → `kiwa-ui`.
+- Default registry URL changed `https://registry.honoui.com` →
+  `https://registry.kiwaui.com`. The CLI still reads the legacy
+  `HONO_UI_REGISTRY_URL` env var as a fallback during the transition.
+- Default token env var changed `HONO_UI_TOKEN` → `KIWA_UI_TOKEN`. The
+  legacy `HONO_UI_TOKEN` is still read as a fallback.
+- Default config file changed `hono-ui.json` → `kiwa-ui.json`. The CLI
+  reads either during the transition; `init` writes `kiwa-ui.json`.
+
 ## 1.1.2 — 2026-04-28
 
 - Fix headings rendering as browser-default bold instead of the intended
@@ -30,7 +47,7 @@
 
 - `init` now pins `lucide` to `^0.575.0` instead of installing the latest
   version. Future lucide releases (which may remove icons due to trademark
-  concerns) cannot break Hono UI components. Existing projects are
+  concerns) cannot break Kiwa UI components. Existing projects are
   unaffected; the pin only applies on first `init`.
 - `init` now scaffolds `styles/swirl-images.css` and imports it from
   `styles/globals.css`. Pro blocks that use `<PlaceholderGradient>` now
@@ -56,8 +73,8 @@
 
 First stable release.
 
-- Default registry endpoint is now `https://registry.honoui.com`. Override
-  with `HONO_UI_REGISTRY_URL` if you are proxying or mirroring the registry.
+- Default registry endpoint is now `https://registry.kiwaui.com`. Override
+  with `KIWA_UI_REGISTRY_URL` if you are proxying or mirroring the registry.
 - `init`, `add`, `add block`, `add starter`, and `diff` commands are stable.
 - License-gated paid blocks and starters authenticate via
-  `Authorization: Bearer <HONO_UI_TOKEN>`.
+  `Authorization: Bearer <KIWA_UI_TOKEN>`.

@@ -25,7 +25,7 @@ const defaultLinks: NavLink[] = [
 ]
 
 export const Nav01: FC<Nav01Props> = ({
-  logo = 'Hono UI',
+  logo = 'Kiwa UI',
   logoHref = '/',
   links = defaultLinks,
   ctaText = 'Get started',

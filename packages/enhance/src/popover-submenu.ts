@@ -29,7 +29,7 @@ type SubmenuTriggerState = {
 export function popoverSubmenu() {
   const menus = document.querySelectorAll<HTMLElement>('[data-popover-submenu]')
 
-  const STYLE_ID = 'hono-ui-popover-submenu-safezone'
+  const STYLE_ID = 'kiwa-ui-popover-submenu-safezone'
   if (!document.getElementById(STYLE_ID)) {
     const style = document.createElement('style')
     style.id = STYLE_ID

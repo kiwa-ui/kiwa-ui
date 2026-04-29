@@ -8,7 +8,7 @@ const app = new Hono<{ Bindings: Bindings; Variables: Variables }>()
 
 app.use('/*', cors())
 
-app.get('/', (c) => c.json({ status: 'ok', name: 'hono-ui-registry' }))
+app.get('/', (c) => c.json({ status: 'ok', name: 'kiwa-ui-registry' }))
 
 app.route('/r', components)
 app.route('/auth', auth)

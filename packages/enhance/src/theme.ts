@@ -10,7 +10,7 @@
  * as a class ('dark' or 'light').
  */
 
-const STORAGE_KEY = 'hono-ui-theme'
+const STORAGE_KEY = 'kiwa-ui-theme'
 
 type Theme = 'light' | 'dark' | 'system'
 

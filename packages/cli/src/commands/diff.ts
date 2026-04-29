@@ -7,7 +7,7 @@ interface DiffOptions {
 export async function diff(options: DiffOptions) {
   console.log(pc.cyan('Checking for component updates...'))
   // TODO: Implement diff command
-  // 1. Read installed components from hono-ui.json
+  // 1. Read installed components from kiwa-ui.json
   // 2. Fetch latest from registry
   // 3. Compare file contents
   // 4. Report updates

@@ -12,7 +12,7 @@ const {
 } = await import('../dist/utils/tsconfig.js')
 
 async function withTmpDir(fn) {
-  const dir = await mkdtemp(join(tmpdir(), 'hono-ui-tsconfig-'))
+  const dir = await mkdtemp(join(tmpdir(), 'kiwa-ui-tsconfig-'))
   try {
     await fn(dir)
   } finally {

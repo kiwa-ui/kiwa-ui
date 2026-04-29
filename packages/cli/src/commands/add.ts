@@ -38,14 +38,14 @@ export async function add(components: string[]) {
   // 1. Read config
   const config = await readConfig(cwd)
   if (!config) {
-    console.error(pc.red('No hono-ui.json found. Run `hono-ui init` first.'))
+    console.error(pc.red('No kiwa-ui.json found. Run `kiwa-ui init` first.'))
     process.exit(1)
   }
 
   console.log(pc.cyan(`Adding components: ${components.join(', ')}`))
 
-  // 2. Get token from env
-  const token = process.env.HONO_UI_TOKEN
+  // 2. Get token from env (KIWA_UI_TOKEN preferred; HONO_UI_TOKEN kept for backwards compat)
+  const token = process.env.KIWA_UI_TOKEN || process.env.HONO_UI_TOKEN
 
   // 3. Track installed components and dependencies
   const installed = new Set(config.components)

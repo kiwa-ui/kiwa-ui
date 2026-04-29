@@ -44,12 +44,12 @@ async function readTemplateFile(path: string) {
 export async function init(options: InitOptions) {
   const cwd = process.cwd()
 
-  console.log(pc.cyan('Initializing hono-ui...'))
+  console.log(pc.cyan('Initializing kiwa-ui...'))
 
   // 1. Check for existing config
   const existingConfig = await readConfig(cwd)
   if (existingConfig && !options.force) {
-    console.error(pc.red('hono-ui.json already exists. Use --force to overwrite.'))
+    console.error(pc.red('kiwa-ui.json already exists. Use --force to overwrite.'))
     process.exit(1)
   }
 
@@ -92,7 +92,7 @@ export async function init(options: InitOptions) {
 
   // 6. Write config
   await writeConfig(getDefaultConfig(), cwd)
-  console.log(pc.dim('Created hono-ui.json'))
+  console.log(pc.dim('Created kiwa-ui.json'))
 
   // 7. Configure tsconfig.json
   const analysis = await analyzeTsconfig(cwd)
@@ -127,9 +127,9 @@ export async function init(options: InitOptions) {
   }
 
   console.log()
-  console.log(pc.green('hono-ui initialized successfully!'))
+  console.log(pc.green('kiwa-ui initialized successfully!'))
   console.log()
   console.log('Next steps:')
   console.log(pc.dim('  1. Import styles/globals.css in your app'))
-  console.log(pc.dim('  2. Add components with: hono-ui add button card'))
+  console.log(pc.dim('  2. Add components with: kiwa-ui add button card'))
 }

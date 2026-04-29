@@ -140,14 +140,14 @@ export const blockMeta: Record<string, BlockMeta> = {
   'faq-01': {
     title: 'FAQ 01',
     description: 'Centered single-column accordion with support section',
-    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
     registryDependencies: ['accordion', 'badge', 'display-card', 'button', 'avatar', 'icon'],
     category: 'marketing',
   },
   'faq-02': {
     title: 'FAQ 02',
     description: 'Centered header with two-column accordion grid',
-    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
     registryDependencies: ['accordion', 'badge', 'icon'],
     category: 'marketing',
   },
@@ -236,14 +236,14 @@ export const blockMeta: Record<string, BlockMeta> = {
   'nav-01': {
     title: 'Nav 01',
     description: 'Simple navbar with centered links and single CTA',
-    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
     registryDependencies: ['button', 'icon'],
     category: 'marketing',
   },
   'nav-02': {
     title: 'Nav 02',
     description: 'Navbar with login link, divider, and CTA button',
-    dependencies: ['clsx', 'tailwind-merge', '@hono-ui/enhance'],
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
     registryDependencies: ['button', 'icon'],
     category: 'marketing',
   },

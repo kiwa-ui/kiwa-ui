@@ -7,13 +7,13 @@ import { diff } from './commands/diff'
 const program = new Command()
 
 program
-  .name('hono-ui')
-  .description('Add Hono UI components to your project')
+  .name('kiwa-ui')
+  .description('Add Kiwa UI components to your project')
   .version('1.0.1')
 
 const initCommand = program
   .command('init')
-  .description('Initialize hono-ui in your project')
+  .description('Initialize kiwa-ui in your project')
   .option('-f, --force', 'Overwrite existing configuration')
   .action(init)
 
@@ -21,8 +21,8 @@ initCommand.addHelpText(
   'after',
   `
 Examples:
-  $ hono-ui init
-  $ hono-ui init --force
+  $ kiwa-ui init
+  $ kiwa-ui init --force
 `
 )
 

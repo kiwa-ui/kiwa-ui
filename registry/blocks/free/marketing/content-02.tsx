@@ -100,7 +100,7 @@ export const Content02: FC<Content02Props> = ({
               uses — not the one with the most features."
             </blockquote>
             <p class="text-base text-foreground-muted">
-              Every block in Hono UI is built on top of the same primitives.
+              Every block in Kiwa UI is built on top of the same primitives.
               That's how a 90-block marketing library stays coherent without
               feeling repetitive.
             </p>
