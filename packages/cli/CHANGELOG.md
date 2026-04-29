@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 — 2026-04-29
+
+- Fix `--version` reporting `1.0.1` after the rebrand (the version
+  string was hardcoded in `src/index.ts` and not bumped alongside
+  `package.json`).
+
 ## 2.0.0 — 2026-04-29
 
 Renamed: this package is now `@kiwa-ui/cli` (was `@hono-ui/cli`). See the

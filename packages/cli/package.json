@@ -1,6 +1,6 @@
 {
   "name": "@kiwa-ui/cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CLI for adding Kiwa UI components to your project",
   "type": "module",
   "bin": {

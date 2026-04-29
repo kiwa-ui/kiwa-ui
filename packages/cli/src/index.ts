@@ -9,7 +9,7 @@ const program = new Command()
 program
   .name('kiwa-ui')
   .description('Add Kiwa UI components to your project')
-  .version('1.0.1')
+  .version('2.0.1')
 
 const initCommand = program
   .command('init')
