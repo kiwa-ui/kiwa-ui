@@ -1,7 +1,11 @@
 import pc from 'picocolors'
 import { readConfig, writeConfig } from '../utils/config'
-import { fetchComponent, type RegistryComponent } from '../utils/registry'
+import { fetchComponent, fetchIndex, type RegistryComponent } from '../utils/registry'
 import { writeComponentFile, detectPackageManager, getInstallCommand, execAsync } from '../utils/files'
+
+interface AddOptions {
+  all?: boolean
+}
 
 async function resolveComponents(
   names: string[],
@@ -32,7 +36,7 @@ async function resolveComponents(
   return resolved
 }
 
-export async function add(components: string[]) {
+export async function add(components: string[], options: AddOptions = {}) {
   const cwd = process.cwd()
 
   // 1. Read config
@@ -42,10 +46,36 @@ export async function add(components: string[]) {
     process.exit(1)
   }
 
-  console.log(pc.cyan(`Adding components: ${components.join(', ')}`))
-
   // 2. Get token from env (KIWA_UI_TOKEN preferred; HONO_UI_TOKEN kept for backwards compat)
   const token = process.env.KIWA_UI_TOKEN || process.env.HONO_UI_TOKEN
+
+  // 2a. Expand --all to every free UI primitive in the registry
+  if (options.all) {
+    if (components.length > 0) {
+      console.error(pc.red('Cannot combine component names with --all.'))
+      process.exit(1)
+    }
+    try {
+      const index = await fetchIndex(token)
+      components = index.filter((c) => c.type === 'ui' && c.free).map((c) => c.name).sort()
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(pc.red(error.message))
+      }
+      process.exit(1)
+    }
+    if (components.length === 0) {
+      console.error(pc.red('Registry index returned no free UI primitives.'))
+      process.exit(1)
+    }
+    console.log(pc.cyan(`Adding all ${components.length} UI primitives...`))
+  } else {
+    if (components.length === 0) {
+      console.error(pc.red('No components specified. Use `kiwa-ui add <name...>` or `--all`.'))
+      process.exit(1)
+    }
+    console.log(pc.cyan(`Adding components: ${components.join(', ')}`))
+  }
 
   // 3. Track installed components and dependencies
   const installed = new Set(config.components)

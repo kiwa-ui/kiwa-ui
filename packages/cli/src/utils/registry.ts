@@ -43,7 +43,15 @@ export async function fetchComponent(
   return response.json()
 }
 
-export async function fetchIndex(token?: string): Promise<RegistryComponent[]> {
+export interface RegistryIndexEntry {
+  name: string
+  type: 'ui' | 'block' | 'starter'
+  title: string
+  description: string
+  free: boolean
+}
+
+export async function fetchIndex(token?: string): Promise<RegistryIndexEntry[]> {
   const headers: Record<string, string> = {}
   if (token) {
     headers['Authorization'] = `Bearer ${token}`

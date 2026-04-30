@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 — 2026-04-30
+
+- `add` now accepts `-a, --all` to install every free UI primitive in a
+  single command. Resolves registry dependencies the same way as a named
+  add. Blocks and starters are intentionally not included; add those
+  individually by name.
+
 ## 2.0.1 — 2026-04-29
 
 - Fix `--version` reporting `1.0.1` after the rebrand (the version

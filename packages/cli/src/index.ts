@@ -9,7 +9,7 @@ const program = new Command()
 program
   .name('kiwa-ui')
   .description('Add Kiwa UI components to your project')
-  .version('2.0.1')
+  .version('2.1.0')
 
 const initCommand = program
   .command('init')
@@ -26,11 +26,21 @@ Examples:
 `
 )
 
-program
+const addCommand = program
   .command('add')
   .description('Add components to your project')
-  .argument('<components...>', 'Components to add')
+  .argument('[components...]', 'Components to add')
+  .option('-a, --all', 'Add all free UI primitives')
   .action(add)
+
+addCommand.addHelpText(
+  'after',
+  `
+Examples:
+  $ kiwa-ui add button card
+  $ kiwa-ui add --all
+`
+)
 
 program
   .command('diff')

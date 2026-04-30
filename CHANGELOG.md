@@ -7,6 +7,15 @@ tracked here.
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
 
+## 2026-04-30
+
+### Added
+
+- CLI 2.1.0: `kiwa-ui add` now accepts `-a, --all` to install every free
+  UI primitive in a single command. Registry dependencies still resolve
+  the same way as a named add. Blocks and starters are intentionally not
+  included — add those by name.
+
 ## 2026-04-29 — Renamed: Hono UI is now Kiwa UI
 
 Hono UI has been renamed to **Kiwa UI** to remove confusion with the
