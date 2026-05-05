@@ -16,6 +16,53 @@ app.get('/robots.txt', (c) =>
   }),
 )
 
+app.get('/schema.json', (c) =>
+  c.json({
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    title: 'Kiwa UI configuration',
+    description: 'Schema for kiwa-ui.json — see https://kiwaui.com/docs',
+    type: 'object',
+    additionalProperties: false,
+    required: ['tailwind', 'aliases', 'components'],
+    properties: {
+      $schema: { type: 'string', format: 'uri' },
+      tsconfig: {
+        type: 'string',
+        description: 'Path to your tsconfig file, relative to the project root.',
+      },
+      tailwind: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['config', 'css'],
+        properties: {
+          config: { type: 'string', description: 'Path to your Tailwind config file.' },
+          css: { type: 'string', description: 'Path to your global CSS entry file.' },
+        },
+      },
+      aliases: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['components', 'utils'],
+        properties: {
+          components: {
+            type: 'string',
+            description: 'Import alias for the components directory (e.g. "@/components").',
+          },
+          utils: {
+            type: 'string',
+            description: 'Import alias for the utils file (e.g. "@/lib/utils").',
+          },
+        },
+      },
+      components: {
+        type: 'array',
+        description: 'Names of installed components, written by the CLI.',
+        items: { type: 'string' },
+      },
+    },
+  }),
+)
+
 app.route('/r', components)
 app.route('/auth', auth)
 

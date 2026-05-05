@@ -1,5 +1,5 @@
 {
-  "$schema": "https://registry.honoui.com/schema.json",
+  "$schema": "https://registry.kiwaui.com/schema.json",
   "tsconfig": "tsconfig.json",
   "tailwind": {
     "config": "tailwind.config.js",
