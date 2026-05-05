@@ -7,6 +7,15 @@ tracked here.
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
 
+## 2026-05-05
+
+### Changed
+
+- Marketing blocks: 2-button rows in `cta-01`, `cta-02`, `cta-03`,
+  `cta-04`, `cta-06`, and `faq-03` now stack as a full-width column on
+  mobile and switch to a horizontal row at `sm` and above, matching the
+  hero blocks.
+
 ## 2026-04-30
 
 ### Added

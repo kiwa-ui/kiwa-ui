@@ -43,12 +43,18 @@ export const Cta01: FC<Cta01Props> = ({
         <p class="max-w-lg text-base text-foreground-muted">
           {description}
         </p>
-        <div class="mt-4 flex gap-3">
-          <a href={primaryCta.href} class={getButtonClasses('default')}>
+        <div class="mt-4 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <a
+            href={primaryCta.href}
+            class={cn(getButtonClasses('default'), 'w-full sm:w-auto')}
+          >
             {primaryCta.label}
           </a>
           {secondaryCta && (
-            <a href={secondaryCta.href} class={getButtonClasses('outline')}>
+            <a
+              href={secondaryCta.href}
+              class={cn(getButtonClasses('outline'), 'w-full sm:w-auto')}
+            >
               {secondaryCta.label}
             </a>
           )}
