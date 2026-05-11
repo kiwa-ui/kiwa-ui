@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.0 — 2026-05-11
+
+### Added
+
+- New `combobox` export driving both `combobox` and `multi-select`
+  primitives. Single mode replaces the selection on pick; multi mode
+  (opt-in via `data-combobox-multiple="true"`) toggles values, keeps the
+  popover open after each selection, and emits one hidden input per
+  selected value. Includes typeahead filtering, keyboard navigation
+  (Arrow/Home/End/Enter/Escape), portaled positioning, and clear-button
+  support. Subpath import: `@kiwa-ui/enhance/combobox`.
+
 ## 1.0.1 — 2026-04-25
 
 ### Fixed

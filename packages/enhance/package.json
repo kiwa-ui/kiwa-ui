@@ -1,6 +1,6 @@
 {
   "name": "@kiwa-ui/enhance",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Optional progressive enhancement for Kiwa UI components",
   "type": "module",
   "main": "./dist/index.js",
@@ -111,6 +111,10 @@
       "import": "./dist/select.js",
       "types": "./dist/select.d.ts"
     },
+    "./combobox": {
+      "import": "./dist/combobox.js",
+      "types": "./dist/combobox.d.ts"
+    },
     "./chart-tooltip": {
       "import": "./dist/chart-tooltip.js",
       "types": "./dist/chart-tooltip.d.ts"
@@ -137,7 +141,7 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts src/dialog.ts src/dropdown.ts src/toast.ts src/clipboard.ts src/theme.ts src/tabs.ts src/accordion.ts src/collapsible.ts src/toggle.ts src/popover.ts src/tooltip.ts src/sheet.ts src/slider.ts src/command.ts src/alert-dialog.ts src/context-menu.ts src/hover-card.ts src/editor.ts src/carousel.ts src/sidebar.ts src/sidebar-mobile.ts src/popover-submenu.ts src/date-picker.ts src/selectable-table.ts src/select.ts src/chart-tooltip.ts --format esm --dts",
+    "build": "tsup src/index.ts src/dialog.ts src/dropdown.ts src/toast.ts src/clipboard.ts src/theme.ts src/tabs.ts src/accordion.ts src/collapsible.ts src/toggle.ts src/popover.ts src/tooltip.ts src/sheet.ts src/slider.ts src/command.ts src/alert-dialog.ts src/context-menu.ts src/hover-card.ts src/editor.ts src/carousel.ts src/sidebar.ts src/sidebar-mobile.ts src/popover-submenu.ts src/date-picker.ts src/selectable-table.ts src/select.ts src/combobox.ts src/chart-tooltip.ts --format esm --dts",
     "dev": "tsup src/*.ts --format esm --watch",
     "typecheck": "tsc --noEmit",
     "lint": "echo 'No linter configured yet'",

@@ -7,6 +7,20 @@ tracked here.
 Since the registry is continuously deployed, entries are grouped by date
 rather than version.
 
+## 2026-05-11
+
+### Added
+
+- New `combobox` primitive: searchable single-select with typeahead
+  filtering, clearable selection, keyboard navigation, and form-input
+  syncing. Trigger styling matches `select-custom`.
+- New `multi-select` primitive: searchable multi-value picker with
+  badge chips, inline X-remove, configurable `maxDisplay` with `+N`
+  overflow, and one hidden input per selected value.
+- Enhance 2.1.0: new `combobox` export drives both primitives (single
+  via the default mode, multi via `data-combobox-multiple="true"`).
+  Reuses the existing portal, position, keyboard, and ARIA utilities.
+
 ## 2026-05-05
 
 ### Changed

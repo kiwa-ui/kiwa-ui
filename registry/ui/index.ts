@@ -92,6 +92,18 @@ export const componentMeta: Record<string, ComponentMeta> = {
     dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
     registryDependencies: ['icon'],
   },
+  combobox: {
+    title: 'Combobox',
+    description: 'Searchable single-select with typeahead filtering',
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
+    registryDependencies: ['icon'],
+  },
+  'multi-select': {
+    title: 'Multi Select',
+    description: 'Searchable multi-select with badge chips, X-remove, and typeahead filtering',
+    dependencies: ['clsx', 'tailwind-merge', '@kiwa-ui/enhance'],
+    registryDependencies: ['icon'],
+  },
   alert: {
     title: 'Alert',
     description: 'An alert component for displaying messages with title and description',

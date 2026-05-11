@@ -24,6 +24,7 @@ export { toggle, toggleGroup } from './toggle'
 export { slider } from './slider'
 export { command } from './command'
 export { select } from './select'
+export { combobox } from './combobox'
 
 // Utilities
 export { toast, type ToastOptions } from './toast'
