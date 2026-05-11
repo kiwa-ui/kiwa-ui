@@ -1,6 +1,6 @@
 import type { FC, JSX, PropsWithChildren } from "hono/jsx";
 import { cn } from "@/lib/utils";
-import { ChevronDownIcon, SearchIcon, XIcon } from "@/components/ui/icon";
+import { CheckIcon, ChevronDownIcon, SearchIcon, XIcon } from "@/components/ui/icon";
 
 type ComboboxProps = PropsWithChildren<{
   class?: string;
@@ -91,20 +91,20 @@ export const ComboboxTrigger: FC<ComboboxTriggerProps> = ({
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
       "disabled:pointer-events-none disabled:opacity-50",
       "hover:bg-secondary",
-      "[&[aria-expanded=true]>svg:last-child]:rotate-180",
-      "[&>svg:last-child]:transition-transform [&>svg:last-child]:duration-200",
+      "[&[aria-expanded=true]>span:last-child>svg:last-child]:rotate-180",
+      "[&>span:last-child>svg:last-child]:transition-transform [&>span:last-child>svg:last-child]:duration-200",
       size === "sm" ? "h-8 py-1" : "h-9 py-2",
       className,
     )}
     {...props}
   >
-    <span class="inline-flex flex-1 min-w-0 items-center gap-1">
-      <span
-        data-combobox-value-display
-        class="truncate text-left"
-      >
-        {children}
-      </span>
+    <span
+      data-combobox-value-display
+      class="truncate text-left flex-1 min-w-0"
+    >
+      {children}
+    </span>
+    <span class="inline-flex items-center gap-1 shrink-0">
       <span
         data-combobox-clear
         role="button"
@@ -112,19 +112,19 @@ export const ComboboxTrigger: FC<ComboboxTriggerProps> = ({
         tabindex={-1}
         hidden
         class={cn(
-          "inline-flex size-4 shrink-0 items-center justify-center rounded cursor-pointer",
+          "inline-flex size-4 items-center justify-center rounded cursor-pointer",
           "text-foreground-muted hover:text-foreground hover:bg-background-subtle transition-colors",
         )}
       >
         <XIcon class="size-3" />
       </span>
+      <ChevronDownIcon
+        class={cn(
+          "shrink-0 text-foreground-muted opacity-50",
+          size === "sm" ? "size-3.5" : "size-4",
+        )}
+      />
     </span>
-    <ChevronDownIcon
-      class={cn(
-        "shrink-0 text-foreground-muted opacity-50",
-        size === "sm" ? "size-3.5" : "size-4",
-      )}
-    />
   </button>
 );
 
@@ -257,7 +257,7 @@ export const ComboboxItem: FC<ComboboxItemProps> = ({
     role="option"
     tabindex={-1}
     class={cn(
-      "relative flex w-full shrink-0 cursor-default select-none items-center gap-2 whitespace-nowrap text-left",
+      "group/combo-item relative flex w-full shrink-0 cursor-default select-none items-center gap-2 whitespace-nowrap text-left",
       "h-8 rounded-lg border border-transparent px-2 text-sm outline-none",
       "transition-colors",
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
@@ -271,6 +271,7 @@ export const ComboboxItem: FC<ComboboxItemProps> = ({
     <span data-combobox-item-label class="flex-1 truncate">
       {children}
     </span>
+    <CheckIcon class="text-primary opacity-0 group-data-[selected=true]/combo-item:opacity-100" />
   </button>
 );
 

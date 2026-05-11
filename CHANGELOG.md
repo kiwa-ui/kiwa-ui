@@ -21,6 +21,13 @@ rather than version.
   via the default mode, multi via `data-combobox-multiple="true"`).
   Reuses the existing portal, position, keyboard, and ARIA utilities.
 
+### Changed
+
+- Combobox + multi-select items show a right-pinned `text-primary`
+  checkmark on the selected option instead of a left checkbox.
+- Multi-select trigger left padding tightened to `pl-1.5` to match the
+  vertical padding so chips sit closer to the trigger edge.
+
 ## 2026-05-05
 
 ### Changed

@@ -82,7 +82,7 @@ export const MultiSelectTrigger: FC<MultiSelectTriggerProps> = ({
     aria-expanded="false"
     class={cn(
       "inline-flex w-full items-center justify-between gap-2",
-      "rounded-lg border border-input bg-card pl-2 pr-3 text-sm text-foreground",
+      "rounded-lg border border-input bg-card pl-1.5 pr-3 text-sm text-foreground",
       "transition-all outline-none",
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
       "disabled:pointer-events-none disabled:opacity-50",
@@ -249,18 +249,10 @@ export const MultiSelectItem: FC<MultiSelectItemProps> = ({
     )}
     {...props}
   >
-    <span
-      class={cn(
-        "inline-flex size-4 shrink-0 items-center justify-center rounded border border-input bg-card",
-        "group-data-[selected=true]/multi-item:bg-primary group-data-[selected=true]/multi-item:border-primary group-data-[selected=true]/multi-item:text-primary-foreground",
-      )}
-      aria-hidden="true"
-    >
-      <CheckIcon class="size-3 opacity-0 group-data-[selected=true]/multi-item:opacity-100" />
-    </span>
     <span data-combobox-item-label class="flex-1 truncate">
       {children}
     </span>
+    <CheckIcon class="size-4 text-primary opacity-0 group-data-[selected=true]/multi-item:opacity-100" />
   </button>
 );
 
