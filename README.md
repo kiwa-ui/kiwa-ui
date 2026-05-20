@@ -19,8 +19,8 @@ Kiwa UI is a component library and CLI built specifically for [Hono](https://hon
 Inside an existing Hono project:
 
 ```bash
-npx @kiwa-ui/cli init
-npx @kiwa-ui/cli add button card dialog
+bunx @kiwa-ui/cli init
+bunx @kiwa-ui/cli add button card dialog
 ```
 
 That copies the components straight into your repo. You own the source — edit them however you want.
@@ -29,7 +29,7 @@ For Pro blocks (after purchase):
 
 ```bash
 export KIWA_UI_TOKEN=<your-license-key>
-npx @kiwa-ui/cli add hero-04 bento-03 chart-area
+bunx @kiwa-ui/cli add hero-04 bento-03 chart-area
 ```
 
 A component looks like this:
